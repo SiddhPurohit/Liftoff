@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "444683172301",
+    "project_id": "space-flight-recorder",
+    "storage_bucket": "space-flight-recorder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444683172301:android:2d382c824743ac2271ac84",
+        "android_client_info": {
+          "package_name": "com.example.space_flight_recorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444683172301-4mm8d69697q8apulk01p0s13sgjbdamg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOW-RpzEixJf4LiF4Ns4BeED2UOSWFdpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444683172301-4mm8d69697q8apulk01p0s13sgjbdamg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
