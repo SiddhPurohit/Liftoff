@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/siddhpurohit/Developer/Capstone/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml",
+            "outputFile": "/Users/siddhpurohit/Developer/GitHub/Liftoff/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml",
             "map": [
                 {
                     "source": "/Users/siddhpurohit/.gradle/caches/transforms-3/38e30c664341fe5bfcc1d9de04582443/transformed/browser-1.4.0/res/values-sq/values-sq.xml",
