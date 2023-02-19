@@ -56,12 +56,12 @@ class BottomNavBar extends StatelessWidget {
           }
           if (index == 1) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => previous()));
+                context, MaterialPageRoute(builder: (context) => PreviousLaunches()));
           }
 
           if (index == 2) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => upcoming()));
+                MaterialPageRoute(builder: (context) => LaunchList()));
           }
           if (index == 3) {
             Navigator.push(

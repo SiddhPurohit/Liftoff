@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
@@ -120,7 +121,9 @@ class _MyVerifyState extends State<MyVerify> {
                         PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: MyPhone.verify, smsCode: code);
                         await auth.signInWithCredential(credential);
                         Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
+
                       }
+
                       catch(e)
                       {
                         final snackbar = SnackBar(content: Text("Invalid OTP"));

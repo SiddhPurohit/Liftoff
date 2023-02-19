@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:space_flight_recorder/nav_bar/bottom_nav_bar.dart';
 import 'package:space_flight_recorder/view/home.dart';
 import 'package:space_flight_recorder/view/login/phone.dart';
+
+import 'login/Name_Email.dart';
 
 class main_page extends StatefulWidget {
   const main_page({Key? key}) : super(key: key);
@@ -21,6 +22,13 @@ class _main_pageState extends State<main_page> {
           {
             if(snapshot.hasData)
               {
+                // if(FirebaseAuth.instance.currentUser!.displayName==null){
+                //   Navigator.push(
+                //       context, MaterialPageRoute(builder: (context) => Details()));
+                // }
+                // else{
+                //
+                // }
                 return MyHome();
               }
             else
