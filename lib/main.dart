@@ -1,6 +1,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:space_flight_recorder/view/Maps.dart';
 import 'package:space_flight_recorder/view/about.dart';
 import 'package:space_flight_recorder/view/home.dart';
 import 'package:space_flight_recorder/view/main_page.dart';
@@ -15,6 +16,7 @@ void main() async{
   // var launchService = LaunchService();
   runApp(MaterialApp(
     initialRoute: 'main',
+    theme: ThemeData(fontFamily: 'Jura'),
     debugShowCheckedModeBanner: false,
     routes: {
       'phone': (context) => MyPhone(),
@@ -23,7 +25,7 @@ void main() async{
       'main': (context) => main_page(),
       'previous': (context) => PreviousLaunches(),
       'upcoming': (context) => LaunchList(),
-      'info': (context) => about()
+      'info': (context) => about(),
     },
   )
   );

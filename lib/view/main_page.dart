@@ -22,14 +22,14 @@ class _main_pageState extends State<main_page> {
           {
             if(snapshot.hasData)
               {
-                // if(FirebaseAuth.instance.currentUser!.displayName==null){
-                //   Navigator.push(
-                //       context, MaterialPageRoute(builder: (context) => Details()));
-                // }
-                // else{
-                //
-                // }
-                return MyHome();
+                if(FirebaseAuth.instance.currentUser!.displayName==null){
+                 return Details();
+
+                }
+                else{
+                  return MyHome();
+                }
+
               }
             else
               {

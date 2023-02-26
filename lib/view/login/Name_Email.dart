@@ -16,17 +16,17 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   @override
   final name_controller= TextEditingController();
-  final email_controller= TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
+
       ),
       body: Column(
         children: [
-          Text('Enter details to continue',
+          Text('Enter your name to continue',
           style: TextStyle(
-            fontSize: 30
+            fontSize: 30,
           ),
           ),
           SizedBox(height: 30,),
@@ -35,39 +35,32 @@ class _DetailsState extends State<Details> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-
-            Text('Name'),
             TextFormField(
               controller: name_controller,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: "Enter Name"
+                hintText: "Name"
               ),
 
-            ),
-            SizedBox(height: 50,),
-            Text('Email'),
-            TextFormField(
-              controller: email_controller,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Enter Email"
-              ),
             ),
               ],
             ),
           ),
-          ElevatedButton(onPressed: (){
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyHome()));
+          ElevatedButton(
+              onPressed: ()async{
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (context) => MyHome()));
             // datago();
-              FirebaseAuth.instance.currentUser!.updateDisplayName("Siddh");
-
+              await FirebaseAuth.instance.currentUser!.updateDisplayName(name_controller.text);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHome(),
+                ),
+              );
           },
               child: Text("Submit")
           ),
-
         ],
       ),
     );
