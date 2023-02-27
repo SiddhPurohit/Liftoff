@@ -68,16 +68,23 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
                 },
 
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+                  padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
                   child: Container(
+
+                    height: 100,
                     decoration: BoxDecoration(
+
                       border: Border.all(color: Colors.white,
-                      width: 0.3,
+                      width: 0.2,
                       ),
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
+                        colorFilter: new ColorFilter.mode(Colors.black45.withOpacity(0.7), BlendMode.dstATop),
                         fit: BoxFit.cover,
-                        image: NetworkImage(launches[index]["image"]),
+                        image: NetworkImage(
+                          launches[index]["image"],
+
+                        ),
                       ),
                     ),
                     child: ListTile(

@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -17,14 +18,19 @@ class LaunchList extends StatefulWidget {
 }
 
 class _LaunchListState extends State<LaunchList> {
+  int index = 0;
+  String Name = '';
+  String imageSrc = '';
   List<dynamic> launches = [];
+  final rocketImages =[];
 
+
+  int _currentIndex = 0;
   @override
   void initState() {
     super.initState();
     fetchLaunches();
   }
-
   void fetchLaunches() async {
     final response = await http.get(
       Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/')
@@ -32,12 +38,28 @@ class _LaunchListState extends State<LaunchList> {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final List<dynamic> results = data['results'];
-      setState(() {
+
         launches = results;
-      });
+        if(launches.isNotEmpty)
+        {
+          final launchh = launches.elementAt(_currentIndex);
+          final Launchname = launchh['name'];
+          Name = Launchname.toString();
+          final Launchimage = launchh['image'];
+          imageSrc = Launchimage.toString();
+          for(index=0;index<=5;index++) {
+            rocketImages.add(launches[index]['image']);
+          }
+
+          setState(() {
+
+          });
+        }
+
     } else {
       print('Failed to fetch launches: ${response.statusCode}');
     }
+
   }
 
   @override
@@ -46,55 +68,176 @@ class _LaunchListState extends State<LaunchList> {
       drawer: Nav_Drawer(),
       backgroundColor: Colors.black,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.black,
         title: const Text('Upcoming Launches'),
       ),
       body: launches.isEmpty
           ? Center(child: CircularProgressIndicator())
-          :ListView.builder(
-        itemCount: launches.length,
-        itemBuilder: (context, index) {
-          final launch = launches[index];
-          final name = launch['name'];
-          final net = launch['net'];
-          final location = launch['pad']['location']['name'];
-          // final mission = launch['mission']['description'];
-          
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Launch_details_upcoming(index1: index,),
-                ),
+          : Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: Column(
+        children: [
+            GestureDetector(
+              onTap: (){ Navigator.push(
+              context,
+              MaterialPageRoute(
+              builder: (context) => Launch_details_upcoming(index1: _currentIndex,),
+              ),
               );
-            },
-            child: ListTile(
-              leading: CircleAvatar(
+              },
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children:
+                [
+                  CarouselSlider(
+                  items: rocketImages.map((imageUrl) {
+                    return ClipRRect(
 
-                  backgroundImage: NetworkImage(launch['image'])),
-              title: Text(name,
-              style: TextStyle(
-                color: Colors.white
-              ),
-              ),
-              subtitle: Text('$location\n$net',
-              style: TextStyle(
-                color: Colors.white
-              ),
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      child: Image.network(
+                        imageUrl,
+                        fit: BoxFit.cover,
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
+                      ),
+                    );
+                  }).toList(),
+                  options: CarouselOptions(
+                    height: 700,
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    aspectRatio: 2,
+                    viewportFraction: 1,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    },
+                  ),
+                ),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(launches[_currentIndex]["name"],
+                          style: TextStyle(
+                              fontSize: 20,
+
+                              color: Colors.white
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(launches[_currentIndex]["net"],
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            letterSpacing: 3,
+                              fontSize: 12,
+                              color: Colors.grey
+                          ),
+                        ),
+                      ),
+                     Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Row(
+                         children: [
+                           Icon(Icons.location_on_outlined,
+                           color: Colors.grey,
+                             size: 15,
+                           ),
+                           Text( launches[_currentIndex]['pad']['location']['name'],
+                             style: TextStyle(
+                                 fontWeight: FontWeight.bold,
+                                 letterSpacing: 3,
+                                 fontSize: 12,
+                                 color: Colors.grey
+                             ),
+                           ),
+                         ],
+                       ),
+                     ),
+                       const SizedBox(
+                        height: 30,
+                      ),
+                      Column(
+                        children: [
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              for (int i = 0; i < rocketImages.length; i++)
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 4),
+                                  width: 15,
+                                  height: 1.5,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    color: _currentIndex == i ? Colors.white : Colors.grey,
+                                  ),
+                                ),
+                            ],
+                          ),
+
+                          SizedBox(height: 16),
+                          Text(
+                            '${_currentIndex + 1}/${rocketImages.length}',
+                            style: TextStyle(fontSize: 16,
+                                color: Colors.white
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          );
-        },
+
+        ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(builder: (context) => const MyHome()),
+          ),
+
+      //     :ListView.builder(
+      //   itemCount: launches.length,
+      //   itemBuilder: (context, index) {
+      //     final launch = launches[index];
+      //     final name = launch['name'];
+      //     final net = launch['net'];
+      //     final location = launch['pad']['location']['name'];
+      //     // final mission = launch['mission']['description'];
+      //
+      //     return GestureDetector(
+      //       onTap: () {
+      //         Navigator.push(
+      //           context,
+      //           MaterialPageRoute(
+      //             builder: (context) => Launch_details_upcoming(index1: index,),
+      //           ),
+      //         );
+      //       },
+      //       child:
+      //       ListTile(
+      //         leading: CircleAvatar(
+      //
+      //             backgroundImage: NetworkImage(launch['image'])),
+      //         title: Text(name,
+      //         style: TextStyle(
+      //           color: Colors.white
+      //         ),
+      //         ),
+      //         subtitle: Text('$location\n$net',
+      //         style: TextStyle(
+      //           color: Colors.white
+      //         ),
+      //         ),
+      //       ),
       //     );
       //   },
-      //   child: const Icon(Icons.timer),
       // ),
       bottomNavigationBar: BottomNavBar(2),
     );

@@ -160,16 +160,28 @@ class _MyHomeState extends State<MyHome> {
                 CarouselSlider(
                   items: [
                     Image.network(
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
                         'https://c4.wallpaperflare.com/wallpaper/559/511/583/spacex-rocket-falcon-9-smoke-wallpaper-preview.jpg'),
                     Image.network(
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
                         'https://c4.wallpaperflare.com/wallpaper/81/233/257/spacex-rocket-smoke-cape-canaveral-wallpaper-preview.jpg'),
                     Image.network(
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
                         'https://c4.wallpaperflare.com/wallpaper/758/798/536/spacex-rocket-launch-pads-falcon-heavy-wallpaper-preview.jpg'),
                     Image.network(
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
                         'https://cdnn1.img.sputniknews.com/img/07e6/0a/17/1102543952_0:0:3071:1728_1920x0_80_0_0_94bf3eb33e85402d96a49a4e84e93b84.jpg'),
                     Image.network(
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
                         'https://static.theprint.in/wp-content/uploads/2018/03/6-01-e1530068959485.jpg?compress=true&quality=80&w=376&dpr=2.6'),
                     Image.network(
+                        color: Colors.black45,
+                        colorBlendMode: BlendMode.darken,
                         'https://c4.wallpaperflare.com/wallpaper/390/31/781/spacex-rocket-falcon-9-wallpaper-preview.jpg'),
                   ],
                   options: CarouselOptions(
@@ -181,13 +193,14 @@ class _MyHomeState extends State<MyHome> {
                     enableInfiniteScroll: true,
                     autoPlayAnimationDuration: Duration(seconds: 3),
                     viewportFraction: 1,
+
                   ),
                 ),
                 Column(
                   children: [
                     Text(
                       '$days : $hours : $minutes : $seconds',
-                      style: TextStyle(fontSize: 30, color: Colors.white),
+                      style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'Days : Hours : Minutes : Seconds',
@@ -433,11 +446,12 @@ class _MyHomeState extends State<MyHome> {
                   initialCameraPosition: CameraPosition(
                       target: LatLng(double.parse(lati), double.parse(long)),
                       zoom: 14),
-                  onMapCreated: (controller) async {
-                    String style = await DefaultAssetBundle.of(context)
-                        .loadString('assets/map_style.json');
-                    controller.setMapStyle(style);
+                  onMapCreated: (controller) async{
+                      String style = await DefaultAssetBundle.of(context)
+                          .loadString('assets/map_style.json');
+                      controller.setMapStyle(style);
                   },
+
                 ),
               ),
             ),
