@@ -4,11 +4,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:space_flight_recorder/nav_bar/Nav_Drawer.dart';
 import 'dart:convert';
-
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 import 'package:space_flight_recorder/nav_bar/bottom_nav_bar.dart';
 import 'package:space_flight_recorder/view/Maps.dart';
 import 'package:space_flight_recorder/view/login/Name_Email.dart';
@@ -37,8 +39,13 @@ class _MyHomeState extends State<MyHome> {
   String? error;
   String lati = "";
   String long = "";
-
-
+  String imgSrc="";
+  String missionType="";
+  String padName="";
+  String programDescription = "";
+  String m_status='';
+  BitmapDescriptor? myIcon;
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   @override
   void initState() {
     super.initState();
@@ -48,8 +55,43 @@ class _MyHomeState extends State<MyHome> {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => Details()));
     }
+    // _loadIcon();
   }
 
+  // void _loadIcon() async {
+  //   final ui.Image image = await loadImageFromAsset('assets/images/my_marker.png', width: 50, height: 50);
+  //   final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+  //   myIcon = BitmapDescriptor.fromBytes(byteData!.buffer.asUint8List());
+  // }
+  //
+  //
+  // Future<ui.Image> loadImageFromAsset(String assetName, {int width = 100, int height = 100}) async {
+  //   final ByteData data = await rootBundle.load(assetName);
+  //   final Completer<ui.Image> completer = Completer();
+  //   ui.decodeImageFromList(Uint8List.view(data.buffer), (ui.Image img) async {
+  //     final ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List());
+  //     final ui.FrameInfo fi = await codec.getNextFrame();
+  //     final double devicePixelRatio = ui.window.devicePixelRatio;
+  //     final ui.Image resized = await ui.webOnlyInstantiateImageCodec(data.buffer.asUint8List()).then((ui.Image image) async {
+  //       final ui.Canvas canvas = ui.Canvas.ui(ui.window.physicalSize.width, ui.window.physicalSize.height, ui.window.devicePixelRatio);
+  //       final ui.Rect rect = ui.Rect.fromLTWH(0, 0, width.toDouble(), height.toDouble());
+  //       canvas.drawImage(image, rect, rect, ui.Paint());
+  //       return await canvas.toImage(width, height).then((value) => value);
+  //     });
+  //     completer.complete(resized);
+  //   });
+  //   return completer.future;
+  // }
+  //
+
+
+
+  // void _loadIcon() async {
+  //   myIcon = await BitmapDescriptor.fromAssetImage(
+  //     ImageConfiguration(devicePixelRatio: 2.5),
+  //     'assets/images/my_marker.png',
+  //   );
+  // }
   void fetchMyHome() async {
     final response = await http.get(
         Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/'));
@@ -84,6 +126,17 @@ class _MyHomeState extends State<MyHome> {
         lati = latitude;
         final longitude = launch['pad']['longitude'];
         long = longitude;
+        final image = launch['image'];
+        imgSrc = image;
+        final m_type = launch['mission']['type'];
+        missionType = m_type;
+        final pad_name = launch['pad']['name'];
+        padName = pad_name;
+        final status = launch['status']['name'];
+        m_status = status;
+
+        // final p_description = launch['program']['description'];
+        // programDescription = p_description;
 
         setState(() {});
       } else {
@@ -143,322 +196,454 @@ class _MyHomeState extends State<MyHome> {
             ? Text('Welcome Undefined user')
             : Text('Welcome ' + userName),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            Text(
-              'Next Launch in:',
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
-            const SizedBox(height: 20),
-
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                CarouselSlider(
-                  items: [
-                    Image.network(
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                        'https://c4.wallpaperflare.com/wallpaper/559/511/583/spacex-rocket-falcon-9-smoke-wallpaper-preview.jpg'),
-                    Image.network(
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                        'https://c4.wallpaperflare.com/wallpaper/81/233/257/spacex-rocket-smoke-cape-canaveral-wallpaper-preview.jpg'),
-                    Image.network(
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                        'https://c4.wallpaperflare.com/wallpaper/758/798/536/spacex-rocket-launch-pads-falcon-heavy-wallpaper-preview.jpg'),
-                    Image.network(
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                        'https://cdnn1.img.sputniknews.com/img/07e6/0a/17/1102543952_0:0:3071:1728_1920x0_80_0_0_94bf3eb33e85402d96a49a4e84e93b84.jpg'),
-                    Image.network(
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                        'https://static.theprint.in/wp-content/uploads/2018/03/6-01-e1530068959485.jpg?compress=true&quality=80&w=376&dpr=2.6'),
-                    Image.network(
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                        'https://c4.wallpaperflare.com/wallpaper/390/31/781/spacex-rocket-falcon-9-wallpaper-preview.jpg'),
-                  ],
-                  options: CarouselOptions(
-                    height: 300,
-                    // height: 200.0,
-                    // enlargeCenterPage: true,
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 7),
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(seconds: 3),
-                    viewportFraction: 1,
-
-                  ),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      '$days : $hours : $minutes : $seconds',
-                      style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Days : Hours : Minutes : Seconds',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Text(
-              Name,
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: EdgeInsets.all(10),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Divider(
-                    color: Colors.white,
-                  ),
+                  const SizedBox(height: 20),
                   Text(
-                    'Description:',
-                    style: TextStyle(color: Colors.blueAccent, fontSize: 14),
+                    'Next Launch in:',
+                    style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
-                  SizedBox(height: 4),
-                  Text(
-                    description,
-                    style: TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 5),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  const SizedBox(height: 20),
+
+                  Center(
+                    child: Stack(
+                      alignment: Alignment.bottomLeft,
                       children: [
-                        Text(
-                          'Agency:',
-                          style: TextStyle(
-                            color: Colors.blueAccent,
+                        Container(
+                          margin: EdgeInsets.all(14.0),
+                          decoration: BoxDecoration(
+
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                            image: DecorationImage(
+                                colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4),BlendMode.srcOver),
+
+                              fit: BoxFit.cover,
+                              image: NetworkImage(imgSrc,
+
+                              )
+                            )
+                          ),
+                          height: 350,
+                          child: Center(
+                            child: Container(
+                              height: 350,
+                              width: double.infinity,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '$days : $hours : $minutes : $seconds',
+                                    style: TextStyle(fontSize: 30, color: Colors.white,),
+                                  ),
+                                  Text(
+                                    'Days : Hours : Minutes : Seconds',
+                                    style: TextStyle(color: Colors.white, fontSize: 12),
+                                  ),
+
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                        Text(
-                          agencyName,
-                          style: TextStyle(color: Colors.white),
+                        // CarouselSlider(
+                        //   items: [
+                        //     Image.network(
+                        //       imgSrc,
+                        //         color: Colors.black45,
+                        //         colorBlendMode: BlendMode.darken,
+                        //
+                        //     ),
+                        //   ],
+                        //   options: CarouselOptions(
+                        //     height: 300,
+                        //     // height: 200.0,
+                        //     // enlargeCenterPage: true,
+                        //     autoPlay: false,
+                        //     autoPlayInterval: Duration(seconds: 7),
+                        //     enableInfiniteScroll: true,
+                        //     autoPlayAnimationDuration: Duration(seconds: 3),
+                        //     viewportFraction: 1,
+                        //
+                        //
+                        //   ),
+                        // ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(40, 0, 0, 40),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(rocketName,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold
+                              ),
+                              ),
+                              Text(missionType,
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                              ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Launch type:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      Text(
-                        type,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Rocket name:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      Text(
-                        rocketName,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Rocket variant:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      Text(
-                        rocketVariant,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Mission Name:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      Text(
-                        missionName,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Orbit:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      Text(
-                        orbitName,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  SizedBox(height: 10,),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(15, 0, 10, 0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.transparent),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Launch Location:',
-                          style: TextStyle(
-                            color: Colors.blueAccent,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "AGENCY",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(imgSrc,
+                              ),
+                              backgroundColor: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      agencyName,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                      maxLines: 1,
+                                    ),
+                                    Text(
+                                      padName,
+                                      style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                      maxLines: 1,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 10,),
+                              Text(
+                                "DESCRIPTION",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(height: 10,),
+                              Text(
+                                description+programDescription,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey),
+                              ),
+                            ],
                           ),
                         ),
-                        Text(
-                          location,
-                          style: TextStyle(color: Colors.white),
+                        SizedBox(height: 15,),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "MORE INFORMATION",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(height: 10),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(20),
+                                            color: Color.fromRGBO(27, 28, 33, 1)),
+                                        height: 80,
+                                        width: 200,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('NAME', style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 12
+                                              ),),
+                                              SizedBox(height: 2,),
+                                              Text( Name,
+                                               style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15
+                                              ),),
+                                            ],
+                                          ),
+                                        )),
+
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: Color.fromRGBO(27, 28, 33, 1)),
+                                      height: 80,
+                                      width: 200,
+                                     child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('MISSION NAME', style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 12
+                                            ),),
+                                            SizedBox(height: 2,),
+                                            Text( missionName,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15
+                                              ),),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: Color.fromRGBO(27, 28, 33, 1)),
+                                      height: 80,
+                                      width: 200,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('STATUS', style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 12
+                                            ),),
+                                            SizedBox(height: 2,),
+                                            Text( m_status,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15
+                                              ),),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Divider(
-                          color: Colors.white,
-                        )
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Container(
+                            margin: EdgeInsets.all(15.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius: BorderRadius.circular(10)),
+                                        child: Icon(
+                                          Icons.map,
+                                          color: Colors.white,
+                                          size: 45,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            location,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text('LOCATION',
+                                            style: TextStyle(
+                                                color: Colors.grey
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Container(
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius: BorderRadius.circular(10)),
+                                        child: Icon(
+                                          Icons.circle_outlined,
+                                          color: Colors.white,
+                                          size: 45,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            orbitName,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text('ORBIT',
+                                          style: TextStyle(
+                                            color: Colors.grey
+                                          ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
                       ],
                     ),
                   ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Date:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
                         ),
-                      ),
-                      Text(
-                        date_final,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Time:',
-                        style: TextStyle(
-                          color: Colors.blueAccent,
+                        Text(
+                          "Location",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      Text(
-                        time_final,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
                   ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 5.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey, width: 5),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black),
+                    height: 300,
+                    child: GoogleMap(
+
+                      markers: {
+                        Marker(
+                          icon: BitmapDescriptor.defaultMarkerWithHue(
+                              BitmapDescriptor.hueAzure
+                          ),
+                          markerId: const MarkerId("Launch Location"),
+                          position: LatLng(double.parse(lati), double.parse(long)),
+                          draggable: true,
+                          onDragEnd: (value) {
+                            // value is the new position
+                          },
+                          // To do: custom marker icon
+                        ),
+                      },
+                      gestureRecognizers: Set()
+                        ..add(Factory<OneSequenceGestureRecognizer>(
+                                () => EagerGestureRecognizer()))
+                        ..add(Factory<PanGestureRecognizer>(
+                                () => PanGestureRecognizer()))
+                        ..add(Factory<ScaleGestureRecognizer>(
+                                () => ScaleGestureRecognizer()))
+                        ..add(Factory<TapGestureRecognizer>(
+                                () => TapGestureRecognizer()))
+                        ..add(Factory<VerticalDragGestureRecognizer>(
+                                () => VerticalDragGestureRecognizer())),
+                      initialCameraPosition: CameraPosition(
+                          target: LatLng(double.parse(lati), double.parse(long)),
+                          zoom: 14),
+                      onMapCreated: (controller) async{
+
+                        String style = await DefaultAssetBundle.of(context)
+                            .loadString('assets/map_style.json');
+                        controller.setMapStyle(style);
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 30,),
                 ],
               ),
             ),
+          ),
+                    //
 
-            Container(
-              height: 300,
-              width: 300,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GoogleMap(
-
-                  markers: {
-                    Marker(
-                      markerId: const MarkerId("Launch Location"),
-                      position: LatLng(double.parse(lati), double.parse(long)),
-                      draggable: true,
-                      onDragEnd: (value) {
-                        // value is the new position
-                      },
-                      // To do: custom marker icon
-                    ),
-                  },
-                  gestureRecognizers: Set()
-                    ..add(Factory<OneSequenceGestureRecognizer>(
-                            () => EagerGestureRecognizer()))
-                    ..add(Factory<PanGestureRecognizer>(
-                            () => PanGestureRecognizer()))
-                    ..add(Factory<ScaleGestureRecognizer>(
-                            () => ScaleGestureRecognizer()))
-                    ..add(Factory<TapGestureRecognizer>(
-                            () => TapGestureRecognizer()))
-                    ..add(Factory<VerticalDragGestureRecognizer>(
-                            () => VerticalDragGestureRecognizer())),
-                  initialCameraPosition: CameraPosition(
-                      target: LatLng(double.parse(lati), double.parse(long)),
-                      zoom: 14),
-                  onMapCreated: (controller) async{
-                      String style = await DefaultAssetBundle.of(context)
-                          .loadString('assets/map_style.json');
-                      controller.setMapStyle(style);
-                  },
-
-                ),
-              ),
-            ),
-
-
-          ],
-        ),
+        ],
       ),
       bottomNavigationBar: BottomNavBar(0),
     );

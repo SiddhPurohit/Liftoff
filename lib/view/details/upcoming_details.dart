@@ -65,8 +65,8 @@ class _Launch_details_upcomingState extends State<Launch_details_upcoming> {
         description=descp;
         final agenName=launch['launch_service_provider']['name'];
         agencyName=agenName;
-        final typee=launch['launch_service_provider']['type'];
-        type=typee;
+        // final typee=launch['launch_service_provider']['type'];
+        // type=typee;
         final r_name=launch['rocket']['configuration']['name'];
         rocketName=r_name;
         final r_variant=launch['rocket']['configuration']['variant'];

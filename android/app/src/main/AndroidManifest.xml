@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.space_flight_recorder">
    <application
-        android:label="space_flight_recorder"
+        android:label="LiftOff"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

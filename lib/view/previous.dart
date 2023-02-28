@@ -87,31 +87,33 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
                         ),
                       ),
                     ),
-                    child: ListTile(
-                      horizontalTitleGap: 15,
-                      title: Text(launches[index]["name"],
-                      style: TextStyle(
-                        fontFamily: 'Jura',
-                        letterSpacing: 1,
-                        color: Colors.white
-                      ),
-                      ),
-                      subtitle: Text(launches[index]["net"],
+                    child: Center(
+                      child: ListTile(
+                        horizontalTitleGap: 15,
+                        title: Text(launches[index]["name"],
                         style: TextStyle(
-                            letterSpacing: 2,
-                            color: Colors.white
+                          fontFamily: 'Jura',
+                          letterSpacing: 1,
+                          color: Colors.white
+                        ),
+                        ),
+                        subtitle: Text(launches[index]["net"],
+                          style: TextStyle(
+                              letterSpacing: 2,
+                              color: Colors.white
 
-                        ),),
-                      trailing: launches[index]["status"]["abbrev"]=="Success"
-                          ?Icon(Icons.check_circle_outline_rounded, color: Colors.green)
-                          :Icon(Icons.close_rounded, color: Colors.red,)
+                          ),),
+                        trailing: launches[index]["status"]["abbrev"]=="Success"
+                            ?Icon(Icons.check_circle_outline_rounded, color: Colors.green)
+                            :Icon(Icons.close_rounded, color: Colors.red,)
 
-                      // launches[index]["status"]["abbrev"] != 'Success'
-                      //     ? launches[index]["status"]["abbrev"]
-                      //     ? Icon(Icons.check, color: Colors.green)
-                      //     : Icon(Icons.close, color: Colors.red)
-                      //     : null,
+                        // launches[index]["status"]["abbrev"] != 'Success'
+                        //     ? launches[index]["status"]["abbrev"]
+                        //     ? Icon(Icons.check, color: Colors.green)
+                        //     : Icon(Icons.close, color: Colors.red)
+                        //     : null,
 
+                      ),
                     ),
                   ),
                 ),

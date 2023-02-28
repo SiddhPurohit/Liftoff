@@ -18,15 +18,18 @@ class _DetailsState extends State<Details> {
   final name_controller= TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
 
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Enter your name to continue',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 25,
+            color: Colors.white
           ),
           ),
           SizedBox(height: 30,),
@@ -36,10 +39,16 @@ class _DetailsState extends State<Details> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
             TextFormField(
+              style: TextStyle(
+                color: Colors.white
+              ),
               controller: name_controller,
+              cursorColor: Colors.white,
               decoration: InputDecoration(
+
                 border: OutlineInputBorder(),
                 hintText: "Name"
+
               ),
 
             ),
@@ -47,6 +56,7 @@ class _DetailsState extends State<Details> {
             ),
           ),
           ElevatedButton(
+
               onPressed: ()async{
             // Navigator.push(
             //     context, MaterialPageRoute(builder: (context) => MyHome()));
@@ -59,7 +69,8 @@ class _DetailsState extends State<Details> {
                 ),
               );
           },
-              child: Text("Submit")
+              child: Text("Submit"),
+
           ),
         ],
       ),

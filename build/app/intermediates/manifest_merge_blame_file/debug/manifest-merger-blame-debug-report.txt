@@ -41,7 +41,7 @@
 30-->[androidx.core:core:1.6.0] /Users/siddhpurohit/.gradle/caches/transforms-3/aa701b47cec244085d46a1a42fcc7fb9/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 31        android:debuggable="true"
 32        android:icon="@mipmap/ic_launcher"
-33        android:label="space_flight_recorder" >
+33        android:label="LiftOff" >
 34        <activity
 35            android:name="com.example.space_flight_recorder.MainActivity"
 36            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

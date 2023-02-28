@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   pinput: ^2.2.31
   carousel_slider: ^4.2.1
-  google_maps_flutter: ^2.2.3
+  google_maps_flutter: ^2.2.4
 
   #Firebase
   firebase_core: ^2.4.1
@@ -72,6 +72,8 @@ flutter:
   assets:
      - assets/login_logo.png
      - assets/map_style.json
+     - assets/images/my_marker.png
+     - assets/images/splash_rocket.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

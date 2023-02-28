@@ -147,7 +147,7 @@
     },
     {
       "name": "google_maps_flutter",
-      "rootUri": "file:///Users/siddhpurohit/.pub-cache/hosted/pub.dev/google_maps_flutter-2.2.3",
+      "rootUri": "file:///Users/siddhpurohit/.pub-cache/hosted/pub.dev/google_maps_flutter-2.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -326,7 +326,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-02-26T17:04:25.313024Z",
+  "generated": "2023-02-28T14:35:14.566806Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
-6-->/Users/siddhpurohit/Developer/flutter/.pub-cache/hosted/pub.dartlang.org/smart_auth-1.0.8/android/src/main/AndroidManifest.xml
+6-->/Users/siddhpurohit/.pub-cache/hosted/pub.dev/smart_auth-1.0.8/android/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="16" />
-7-->/Users/siddhpurohit/Developer/flutter/.pub-cache/hosted/pub.dartlang.org/smart_auth-1.0.8/android/src/main/AndroidManifest.xml
+7-->/Users/siddhpurohit/.pub-cache/hosted/pub.dev/smart_auth-1.0.8/android/src/main/AndroidManifest.xml
 8
 9</manifest>
