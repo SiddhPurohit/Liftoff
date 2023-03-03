@@ -44,6 +44,8 @@ class _MyHomeState extends State<MyHome> {
   String padName="";
   String programDescription = "";
   String m_status='';
+  String time1 = '';
+  String localTime = "";
   BitmapDescriptor? myIcon;
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
   @override
@@ -102,6 +104,8 @@ class _MyHomeState extends State<MyHome> {
         final launch = results.elementAt(0);
         final launchTimeStr = launch['net'];
         launchTime = DateTime.parse(launchTimeStr).toLocal();
+        time1 = launchTime.toString();
+        print(time1);
         final Launchname = launch['name'];
         Name = Launchname.toString();
         final descp = launch['mission']['description'];
@@ -172,9 +176,11 @@ class _MyHomeState extends State<MyHome> {
     final hours = duration.inHours.remainder(24);
     final minutes = duration.inMinutes.remainder(60);
     final seconds = duration.inSeconds.remainder(60);
-    final final_time = time.split("T");
+    final final_time = time1.split(" ");
     final date_final = final_time.elementAt(0).toString();
     final time_final = final_time.elementAt(1).toString();
+    final time11 = time_final.split(".");
+    localTime = time11.elementAt(0).toString();
     String? userName = FirebaseAuth.instance.currentUser?.displayName;
     return Scaffold(
       backgroundColor: Colors.black,
@@ -584,7 +590,7 @@ class _MyHomeState extends State<MyHome> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            time_final,
+                                            localTime,
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,

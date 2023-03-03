@@ -6,13 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:space_flight_recorder/nav_bar/Nav_Drawer.dart';
 import 'dart:convert';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
-import 'package:space_flight_recorder/nav_bar/bottom_nav_bar.dart';
-import 'package:space_flight_recorder/view/Maps.dart';
-import 'package:space_flight_recorder/view/Splash%20screen.dart';
 import 'package:space_flight_recorder/view/loading.dart';
 import 'package:space_flight_recorder/view/login/Name_Email.dart';
 
@@ -45,6 +40,8 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
   String padName="";
   String programDescription = "";
   String m_status='';
+  String time1='';
+  String localTime='';
   BitmapDescriptor? myIcon;
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
 
@@ -104,6 +101,8 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
         final launch = results.elementAt(index);
         final launchTimeStr = launch['net'];
         launchTime = DateTime.parse(launchTimeStr).toLocal();
+        time1 = launchTime.toString();
+        print(time1);
         final Launchname = launch['name'];
         Name = Launchname.toString();
         final descp = launch['mission']['description'];
@@ -141,7 +140,7 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
         padName = pad_name;
         final status = launch['status']['name'];
         m_status = status;
-
+        print("Launch time is"+launchTime.toString());
         // final p_description = launch['program']['description'];
         // programDescription = p_description;
 
@@ -173,10 +172,13 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
     final hours = duration.inHours.remainder(24);
     final minutes = duration.inMinutes.remainder(60);
     final seconds = duration.inSeconds.remainder(60);
-    final final_time = time.split("T");
+    final final_time = time1.split(" ");
     final date_final = final_time.elementAt(0).toString();
     final time_final = final_time.elementAt(1).toString();
+    final time11 = time_final.split(".");
+    localTime = time11.elementAt(0).toString();
     String? userName = FirebaseAuth.instance.currentUser?.displayName;
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -583,7 +585,7 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            time_final,
+                                            localTime,
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,
@@ -689,7 +691,7 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
                                 () => VerticalDragGestureRecognizer())),
                       initialCameraPosition: CameraPosition(
                           target: LatLng(double.parse(lati), double.parse(long)),
-                          zoom: 14),
+                          zoom:14),
                       onMapCreated: (controller) async{
 
                         String style = await DefaultAssetBundle.of(context)
