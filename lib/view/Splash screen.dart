@@ -17,7 +17,7 @@ class _RocketAnimationState extends State<RocketAnimation> with SingleTickerProv
 
     // Create an animation controller
     _animationController = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: Duration(seconds: 2),
       vsync: this,
     );
 

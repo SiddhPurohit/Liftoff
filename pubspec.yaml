@@ -38,6 +38,7 @@ dependencies:
   pinput: ^2.2.31
   carousel_slider: ^4.2.1
   google_maps_flutter: ^2.2.4
+  font_awesome_flutter: ^10.4.0
 
   #Firebase
   firebase_core: ^2.4.1
@@ -74,6 +75,13 @@ flutter:
      - assets/map_style.json
      - assets/images/my_marker.png
      - assets/images/splash_rocket.png
+     - assets/images/about_rocket.png
+     - assets/images/about_line.png
+     - assets/images/about_logo.png
+     - assets/images/profile_pics/reyansh.png
+     - assets/images/profile_pics/kaustubh.png
+     - assets/images/profile_pics/siddh.png
+     - assets/images/profile_pics/krish.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

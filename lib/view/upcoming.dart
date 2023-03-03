@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:space_flight_recorder/view/details/upcoming_details.dart';
+import 'package:space_flight_recorder/view/loading.dart';
 import 'dart:convert';
 import '../nav_bar/Nav_Drawer.dart';
 import '../nav_bar/bottom_nav_bar.dart';
@@ -23,6 +24,7 @@ class _LaunchListState extends State<LaunchList> {
   String imageSrc = '';
   List<dynamic> launches = [];
   final rocketImages =[];
+  bool loading = true;
 
 
   int _currentIndex = 0;
@@ -47,10 +49,9 @@ class _LaunchListState extends State<LaunchList> {
           Name = Launchname.toString();
           final Launchimage = launchh['image'];
           imageSrc = Launchimage.toString();
-          for(index=0;index<=5;index++) {
+          for(index=0;index<=9;index++) {
             rocketImages.add(launches[index]['image']);
           }
-
           setState(() {
 
           });
@@ -59,11 +60,14 @@ class _LaunchListState extends State<LaunchList> {
     } else {
       print('Failed to fetch launches: ${response.statusCode}');
     }
-
+    loading=false;
   }
 
   @override
   Widget build(BuildContext context) {
+    if(loading){
+      return LoadingScreen();
+    }
     return Scaffold(
       drawer: Nav_Drawer(),
       backgroundColor: Colors.black,
@@ -72,9 +76,7 @@ class _LaunchListState extends State<LaunchList> {
         backgroundColor: Colors.black,
         title: const Text('Upcoming Launches'),
       ),
-      body: launches.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : Padding(
+      body: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: Column(
         children: [
@@ -82,7 +84,7 @@ class _LaunchListState extends State<LaunchList> {
               onTap: (){ Navigator.push(
               context,
               MaterialPageRoute(
-              builder: (context) => Launch_details_upcoming(index1: _currentIndex,),
+              builder: (context) => Upcoming_details(index1: _currentIndex,),
               ),
               );
               },
@@ -149,12 +151,16 @@ class _LaunchListState extends State<LaunchList> {
                            color: Colors.grey,
                              size: 15,
                            ),
-                           Text( launches[_currentIndex]['pad']['location']['name'],
-                             style: TextStyle(
-                                 fontWeight: FontWeight.bold,
-                                 letterSpacing: 3,
-                                 fontSize: 12,
-                                 color: Colors.grey
+                           Expanded(
+                             child: Text( launches[_currentIndex]['pad']['location']['name'],
+                               style: TextStyle(
+                                   fontWeight: FontWeight.bold,
+                                   letterSpacing: 3,
+                                   fontSize: 12,
+                                   color: Colors.grey,
+                                  overflow: TextOverflow.ellipsis,
+                               ),
+                               maxLines: 2,
                              ),
                            ),
                          ],

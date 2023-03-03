@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -13,6 +12,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:space_flight_recorder/nav_bar/bottom_nav_bar.dart';
 import 'package:space_flight_recorder/view/Maps.dart';
+import 'package:space_flight_recorder/view/loading.dart';
 import 'package:space_flight_recorder/view/login/Name_Email.dart';
 
 class MyHome extends StatefulWidget {
@@ -108,8 +108,14 @@ class _MyHomeState extends State<MyHome> {
         description = descp;
         final agenName = launch['launch_service_provider']['name'];
         agencyName = agenName;
-        final typee = launch['launch_service_provider']['type'];
-        type = typee;
+        if(launch['launch_service_provider']['type']==null){
+          type="";
+        }
+        else{
+         final typee = launch['launch_service_provider']['type'];
+         type=typee;
+        }
+
         final r_name = launch['rocket']['configuration']['name'];
         rocketName = r_name;
         final r_variant = launch['rocket']['configuration']['variant'];
@@ -138,7 +144,6 @@ class _MyHomeState extends State<MyHome> {
         // final p_description = launch['program']['description'];
         // programDescription = p_description;
 
-        setState(() {});
       } else {
         print('No upcoming launches found');
       }
@@ -147,7 +152,6 @@ class _MyHomeState extends State<MyHome> {
       print('Failed to fetch upcoming launches: ${response.statusCode}');
     }
     loading = false;
-    setState(() {});
   }
 
   void updateCountdown() {
@@ -159,24 +163,9 @@ class _MyHomeState extends State<MyHome> {
     // double lati1 =double.parse(lati);
     // double long1 =double.parse(long);
     if (loading) {
-      return Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(
-          child: Visibility( visible: loading,
-              child: CircularProgressIndicator(
-                color: Colors.blueAccent,
-              )
-          ),
-        ),
-      );
+      return LoadingScreen();
     }
-    if (error != null) {
-      return Scaffold(
-        body: Center(
-          child: Text(error!),
-        ),
-      );
-    }
+
     final now = DateTime.now().toLocal();
     final duration = launchTime.difference(now);
     final days = duration.inDays;
@@ -188,7 +177,7 @@ class _MyHomeState extends State<MyHome> {
     final time_final = final_time.elementAt(1).toString();
     String? userName = FirebaseAuth.instance.currentUser?.displayName;
     return Scaffold(
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.black,
       drawer: Nav_Drawer(),
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -574,6 +563,81 @@ class _MyHomeState extends State<MyHome> {
                                 SizedBox(
                                   height: 20,
                                 ),
+                                Container(
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius: BorderRadius.circular(10)),
+                                        child: Icon(
+                                          Icons.access_time_filled,
+                                          color: Colors.white,
+                                          size: 45,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            time_final,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text('Time of launch',
+                                            style: TextStyle(
+                                                color: Colors.grey
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 20,),
+                                Container(
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey,
+                                            borderRadius: BorderRadius.circular(10)),
+                                        child: Icon(
+                                          Icons.date_range,
+                                          color: Colors.white,
+                                          size: 45,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            date_final,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text('Date of launch',
+                                            style: TextStyle(
+                                                color: Colors.grey
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                       ],
                     ),
                   ),
@@ -611,7 +675,6 @@ class _MyHomeState extends State<MyHome> {
                           onDragEnd: (value) {
                             // value is the new position
                           },
-                          // To do: custom marker icon
                         ),
                       },
                       gestureRecognizers: Set()

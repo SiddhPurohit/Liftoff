@@ -2,9 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:space_flight_recorder/nav_bar/Nav_Drawer.dart';
+import 'package:space_flight_recorder/view/details/previous_details.dart';
 import 'dart:convert';
 
-import 'package:space_flight_recorder/view/details/previous_details.dart';
+import 'package:space_flight_recorder/view/details/upcoming_details.dart';
+import 'package:space_flight_recorder/view/loading.dart';
 
 import '../nav_bar/bottom_nav_bar.dart';
 import 'login/phone.dart';
@@ -16,6 +18,7 @@ class PreviousLaunches extends StatefulWidget {
 
 class _PreviousLaunchesState extends State<PreviousLaunches> {
   List launches = [];
+  bool loading = true;
 
   Future<void> fetchData() async {
     var url = "https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=110";
@@ -28,6 +31,7 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
+    loading = false;
   }
 
   @override
@@ -37,6 +41,9 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
   }
   @override
   Widget build(BuildContext context) {
+    if(loading){
+      return LoadingScreen();
+    }
     return Scaffold(
       drawer:Nav_Drawer(),
       backgroundColor: Colors.black,
@@ -50,9 +57,7 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
         ),
       ),
       body: Center(
-        child: launches.isEmpty
-            ? CircularProgressIndicator(color: Colors.blueAccent,)
-            :
+        child:
         ListView.builder(
           itemCount: launches.length,
           itemBuilder: (context, index) {
@@ -62,7 +67,7 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Launch_details(index1: index,),
+                      builder: (context) => Previous_details(index1: index,),
                     ),
                   );
                 },

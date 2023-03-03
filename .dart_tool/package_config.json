@@ -146,6 +146,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///Users/siddhpurohit/.pub-cache/hosted/pub.dev/font_awesome_flutter-10.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "google_maps_flutter",
       "rootUri": "file:///Users/siddhpurohit/.pub-cache/hosted/pub.dev/google_maps_flutter-2.2.4",
       "packageUri": "lib/",
@@ -326,7 +332,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2023-02-28T14:35:14.566806Z",
+  "generated": "2023-03-01T11:53:55.316037Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }
