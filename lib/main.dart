@@ -24,7 +24,7 @@ void main() async{
     routes: {
       'phone': (context) => MyPhone(),
       'verify': (context) => MyVerify(),
-      'home':(context) => MyHome(),
+      'home':(context) => Home1(),
       'main': (context) => main_page(),
       'previous': (context) => PreviousLaunches(),
       'upcoming': (context) => LaunchList(),

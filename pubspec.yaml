@@ -39,6 +39,7 @@ dependencies:
   carousel_slider: ^4.2.1
   google_maps_flutter: ^2.2.4
   font_awesome_flutter: ^10.4.0
+  url_launcher: ^6.1.10
 
   #Firebase
   firebase_core: ^2.4.1

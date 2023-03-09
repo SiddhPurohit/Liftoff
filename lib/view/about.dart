@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:space_flight_recorder/nav_bar/Nav_Drawer.dart';
 import 'package:space_flight_recorder/nav_bar/bottom_nav_bar.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 
 class about extends StatelessWidget {
@@ -49,9 +50,17 @@ class about extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Siddh Purohit",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                            InkWell(
+                              child: Text(
+                                "Siddh Purohit",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                              onTap: (){
+                                launchUrlString('https://www.linkedin.com/in/siddh-purohit-1872a122a/',
+                                    mode: LaunchMode.externalNonBrowserApplication
+                                );
+
+                              },
                             ),
                             Divider(
                               endIndent: 1,
@@ -91,9 +100,17 @@ class about extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Reyansh Sawant",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                            InkWell(
+                              onTap: ()
+                              {
+                                launchUrlString('https://www.linkedin.com/in/reyansh-sawant-97617b244',
+                                    mode: LaunchMode.externalNonBrowserApplication
+                                );
+                              },
+                              child: Text(
+                                "Reyansh Sawant",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
                             ),
                             Divider(
                               endIndent: 1,
@@ -133,9 +150,17 @@ class about extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Kaustubh Gaikwad",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                            InkWell(
+                              child: Text(
+                                "Kaustubh Gaikwad",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                              onTap: ()
+                              {
+                                launchUrlString('https://www.linkedin.com/in/kaustubh-gaikwad-56a32a244',
+                                    mode: LaunchMode.externalNonBrowserApplication
+                                );
+                              },
                             ),
                             Divider(
                               endIndent: 1,
@@ -175,9 +200,17 @@ class about extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Krish Trivedi",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                            InkWell(
+                              child: Text(
+                                "Krish Trivedi",
+                                style: TextStyle(color: Colors.white, fontSize: 20),
+                              ),
+                              onTap: ()
+                              {
+                                  launchUrlString('https://www.linkedin.com/in/krish-trivedi-3bb895268',
+                                      mode: LaunchMode.externalNonBrowserApplication
+                                  );
+                              },
                             ),
                             Divider(
                               endIndent: 1,
@@ -202,6 +235,10 @@ class about extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        VerticalDivider(
+                          thickness: 2,
+                          color: Colors.white,
+                        ),
                         IconButton(
                             onPressed: () {},
                             icon: Icon(
@@ -213,24 +250,7 @@ class about extends StatelessWidget {
                           thickness: 2,
                           color: Colors.white,
                         ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              FontAwesomeIcons.instagram,
-                              color: Colors.white,
-                              size: 30,
-                            )),
-                        VerticalDivider(
-                          thickness: 2,
-                          color: Colors.white,
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              FontAwesomeIcons.twitter,
-                              color: Colors.white,
-                              size: 30,
-                            )),
+
                       ],
                     ),
                   ),

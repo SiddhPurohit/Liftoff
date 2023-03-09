@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:space_flight_recorder/view/homepage.dart';
 
 import '../home.dart';
 
@@ -65,12 +66,11 @@ class _DetailsState extends State<Details> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MyHome(),
+                  builder: (context) => HomePage(),
                 ),
               );
           },
               child: Text("Submit"),
-
           ),
         ],
       ),

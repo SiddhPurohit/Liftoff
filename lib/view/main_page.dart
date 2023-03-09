@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:space_flight_recorder/view/home.dart';
+import 'package:space_flight_recorder/view/homepage.dart';
 import 'package:space_flight_recorder/view/login/phone.dart';
 
 import 'login/Name_Email.dart';
@@ -27,7 +28,7 @@ class _main_pageState extends State<main_page> {
 
                 }
                 else{
-                  return MyHome();
+                  return HomePage();
                 }
 
               }

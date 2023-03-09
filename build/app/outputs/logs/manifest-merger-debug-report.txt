@@ -7,6 +7,8 @@ MERGED from [:cloud_firestore] /Users/siddhpurohit/Developer/GitHub/Liftoff/buil
 MERGED from [:cloud_firestore] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-14:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/542a859793ec57d6a4d40865c7efc6d9/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/542a859793ec57d6a4d40865c7efc6d9/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/siddhpurohit/.gradle/caches/transforms-3/0548e507d3019ac84ce4969b57803f45/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:26:5-71:19
@@ -52,6 +54,7 @@ MERGED from [:cloud_firestore] /Users/siddhpurohit/Developer/GitHub/Liftoff/buil
 MERGED from [:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:google_maps_flutter_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/google_maps_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_plugin_android_lifecycle] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-16:12
 MERGED from [:smart_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/smart_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/e1f5bf00836c889852a9a2014464d260/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/542a859793ec57d6a4d40865c7efc6d9/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
@@ -122,6 +125,8 @@ MERGED from [:google_maps_flutter_android] /Users/siddhpurohit/Developer/GitHub/
 MERGED from [:google_maps_flutter_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/google_maps_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:smart_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/smart_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:smart_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/smart_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/e1f5bf00836c889852a9a2014464d260/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
@@ -256,6 +261,14 @@ ADDED from [:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/f
 		ADDED from [:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 	android:name
 		ADDED from [:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/542a859793ec57d6a4d40865c7efc6d9/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 	android:required

@@ -88,6 +88,11 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
+        <activity
+            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
         <uses-library
             android:name="androidx.window.extensions"
             android:required="false" />

@@ -5,6 +5,8 @@ import 'package:space_flight_recorder/view/home.dart';
 import 'package:space_flight_recorder/view/previous.dart';
 import 'package:space_flight_recorder/view/upcoming.dart';
 
+import '../view/homepage.dart';
+
 
 class BottomNavBar extends StatelessWidget {
   int currentindexvalue = 0;
@@ -52,7 +54,7 @@ class BottomNavBar extends StatelessWidget {
           currentindexvalue = index;
           if (index == 0) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyHome()));
+                context, MaterialPageRoute(builder: (context) => HomePage()));
           }
           if (index == 1) {
             Navigator.push(

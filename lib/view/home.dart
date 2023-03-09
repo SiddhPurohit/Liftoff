@@ -15,14 +15,14 @@ import 'package:space_flight_recorder/view/Maps.dart';
 import 'package:space_flight_recorder/view/loading.dart';
 import 'package:space_flight_recorder/view/login/Name_Email.dart';
 
-class MyHome extends StatefulWidget {
-  const MyHome({Key? key}) : super(key: key);
+class Home1 extends StatefulWidget {
+  const Home1({Key? key}) : super(key: key);
 
   @override
-  _MyHomeState createState() => _MyHomeState();
+  _Home1State createState() => _Home1State();
 }
 
-class _MyHomeState extends State<MyHome> {
+class _Home1State extends State<Home1> {
   DateTime launchTime = DateTime.now();
   String Name = '';
   String description = '';
@@ -51,7 +51,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   void initState() {
     super.initState();
-    fetchMyHome();
+    fetchHome1();
     Timer.periodic(Duration(seconds: 1), (Timer t) => updateCountdown());
     if (FirebaseAuth.instance.currentUser!.displayName == null) {
       Navigator.push(
@@ -94,7 +94,7 @@ class _MyHomeState extends State<MyHome> {
   //     'assets/images/my_marker.png',
   //   );
   // }
-  void fetchMyHome() async {
+  void fetchHome1() async {
     final response = await http.get(
         Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/'));
     if (response.statusCode == 200) {
