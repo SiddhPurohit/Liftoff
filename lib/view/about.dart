@@ -13,7 +13,7 @@ class about extends StatelessWidget {
     return
          Scaffold(
           appBar: AppBar(
-            title: Text("About",
+            title: const Text("About",
             style: TextStyle(
 
             ),
@@ -21,242 +21,244 @@ class about extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.black,
           ),
-          drawer: Nav_Drawer(),
+          drawer: const Nav_Drawer(),
           backgroundColor: Colors.black,
-          body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height: 40),
-                Image.asset('assets/images/about_logo.png',
-                height: 150,
-                ),
-                SizedBox(height: 60),
-                Container(
-                  margin: EdgeInsets.only(left: 30, right: 15),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                        'assets/images/profile_pics/siddh.png'
-                        ),
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      IntrinsicWidth(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              child: Text(
-                                "Siddh Purohit",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                              onTap: (){
-                                launchUrlString('https://www.linkedin.com/in/siddh-purohit-1872a122a/',
-                                    mode: LaunchMode.externalNonBrowserApplication
-                                );
-
-                              },
-                            ),
-                            Divider(
-                              endIndent: 1,
-                              indent: 1,
-                              thickness: 0.5,
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Project Leader",
-                              style: TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+          body: SingleChildScrollView(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 40),
+                  Image.asset('assets/images/about_logo.png',
+                  height: 150,
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30, right: 15),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                            'assets/images/profile_pics/reyansh.png'
+                  const SizedBox(height: 60),
+                  Container(
+                    margin: const EdgeInsets.only(left: 30, right: 15),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage(
+                          'assets/images/profile_pics/siddh.png'
+                          ),
+                          radius: 25,
+                          backgroundColor: Colors.white,
                         ),
-                        radius: 23,
-                        backgroundColor: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      IntrinsicWidth(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              onTap: ()
-                              {
-                                launchUrlString('https://www.linkedin.com/in/reyansh-sawant-97617b244',
-                                    mode: LaunchMode.externalNonBrowserApplication
-                                );
-                              },
-                              child: Text(
-                                "Reyansh Sawant",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                            ),
-                            Divider(
-                              endIndent: 1,
-                              indent: 1,
-                              thickness: 0.5,
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Developer",
-                              style: TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                          ],
+                        const SizedBox(
+                          width: 15,
                         ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30, right: 15),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                  backgroundImage: AssetImage(
-                  'assets/images/profile_pics/kaustubh.png'
-                  ),
-                        radius: 23,
-                        backgroundColor: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      IntrinsicWidth(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              child: Text(
-                                "Kaustubh Gaikwad",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                              onTap: ()
-                              {
-                                launchUrlString('https://www.linkedin.com/in/kaustubh-gaikwad-56a32a244',
-                                    mode: LaunchMode.externalNonBrowserApplication
-                                );
-                              },
-                            ),
-                            Divider(
-                              endIndent: 1,
-                              indent: 1,
-                              thickness: 0.5,
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Designer",
-                              style: TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30, right: 15),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                            'assets/images/profile_pics/krish.png'
-                        ),
-                        radius: 23,
-                        backgroundColor: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      IntrinsicWidth(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              child: Text(
-                                "Krish Trivedi",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                              onTap: ()
-                              {
-                                  launchUrlString('https://www.linkedin.com/in/krish-trivedi-3bb895268',
+                        IntrinsicWidth(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                child: const Text(
+                                  "Siddh Purohit",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onTap: (){
+                                  launchUrlString('https://www.linkedin.com/in/siddh-purohit-1872a122a/',
                                       mode: LaunchMode.externalNonBrowserApplication
                                   );
-                              },
-                            ),
-                            Divider(
-                              endIndent: 1,
-                              indent: 1,
-                              thickness: 0.5,
-                              height: 2,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Designer",
-                              style: TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(height: 100),
-                Center(
-                  child: IntrinsicHeight(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        VerticalDivider(
-                          thickness: 2,
-                          color: Colors.white,
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              FontAwesomeIcons.linkedinIn,
-                              color: Colors.white,
-                              size: 30,
-                            )),
-                        VerticalDivider(
-                          thickness: 2,
-                          color: Colors.white,
-                        ),
 
+                                },
+                              ),
+                              const Divider(
+                                endIndent: 1,
+                                indent: 1,
+                                thickness: 0.5,
+                                height: 2,
+                                color: Colors.white,
+                              ),
+                              const Text(
+                                "Project Leader",
+                                style: TextStyle(color: Colors.white, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
-                ),
-                SizedBox(height: 40),
-              ]),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 30, right: 15),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage(
+                              'assets/images/profile_pics/reyansh.png'
+                          ),
+                          radius: 23,
+                          backgroundColor: Colors.white,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        IntrinsicWidth(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap: ()
+                                {
+                                  launchUrlString('https://www.linkedin.com/in/reyansh-sawant-97617b244',
+                                      mode: LaunchMode.externalNonBrowserApplication
+                                  );
+                                },
+                                child: const Text(
+                                  "Reyansh Sawant",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                              ),
+                              const Divider(
+                                endIndent: 1,
+                                indent: 1,
+                                thickness: 0.5,
+                                height: 2,
+                                color: Colors.white,
+                              ),
+                              const Text(
+                                "Developer",
+                                style: TextStyle(color: Colors.white, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 30, right: 15),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                    backgroundImage: AssetImage(
+                    'assets/images/profile_pics/kaustubh.png'
+                    ),
+                          radius: 23,
+                          backgroundColor: Colors.white,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        IntrinsicWidth(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                child: const Text(
+                                  "Kaustubh Gaikwad",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onTap: ()
+                                {
+                                  launchUrlString('https://www.linkedin.com/in/kaustubh-gaikwad-56a32a244',
+                                      mode: LaunchMode.externalNonBrowserApplication
+                                  );
+                                },
+                              ),
+                              const Divider(
+                                endIndent: 1,
+                                indent: 1,
+                                thickness: 0.5,
+                                height: 2,
+                                color: Colors.white,
+                              ),
+                              const Text(
+                                "Designer",
+                                style: TextStyle(color: Colors.white, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 30, right: 15),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage(
+                              'assets/images/profile_pics/krish.png'
+                          ),
+                          radius: 23,
+                          backgroundColor: Colors.white,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        IntrinsicWidth(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                child: const Text(
+                                  "Krish Trivedi",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onTap: ()
+                                {
+                                    launchUrlString('https://www.linkedin.com/in/krish-trivedi-3bb895268',
+                                        mode: LaunchMode.externalNonBrowserApplication
+                                    );
+                                },
+                              ),
+                              const Divider(
+                                endIndent: 1,
+                                indent: 1,
+                                thickness: 0.5,
+                                height: 2,
+                                color: Colors.white,
+                              ),
+                              const Text(
+                                "Designer",
+                                style: TextStyle(color: Colors.white, fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 100),
+                  Center(
+                    child: IntrinsicHeight(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const VerticalDivider(
+                            thickness: 2,
+                            color: Colors.white,
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                FontAwesomeIcons.linkedinIn,
+                                color: Colors.white,
+                                size: 30,
+                              )),
+                          const VerticalDivider(
+                            thickness: 2,
+                            color: Colors.white,
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                ]),
+          ),
            bottomNavigationBar: BottomNavBar(3),
         );
 

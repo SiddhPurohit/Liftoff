@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/siddhpurohit/Developer/GitHub/Liftoff/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
+            "outputFile": "/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml",
             "map": [
                 {
                     "source": "/Users/siddhpurohit/.gradle/caches/transforms-3/3ee0f8915dc9bf42c60f3eef0b7bd28a/transformed/jetified-play-services-basement-18.1.0/res/values-it/values.xml",

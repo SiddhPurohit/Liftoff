@@ -69,144 +69,146 @@ class _LaunchListState extends State<LaunchList> {
       return LoadingScreen();
     }
     return Scaffold(
-      drawer: Nav_Drawer(),
+      drawer: const Nav_Drawer(),
       backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
         title: const Text('Upcoming Launches'),
       ),
-      body: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: Column(
-        children: [
-            GestureDetector(
-              onTap: (){ Navigator.push(
-              context,
-              MaterialPageRoute(
-              builder: (context) => Upcoming_details(index1: _currentIndex,),
-              ),
-              );
-              },
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children:
-                [
-                  CarouselSlider(
-                  items: rocketImages.map((imageUrl) {
-                    return ClipRRect(
-
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      child: Image.network(
-                        imageUrl,
-                        fit: BoxFit.cover,
-                        color: Colors.black45,
-                        colorBlendMode: BlendMode.darken,
-                      ),
-                    );
-                  }).toList(),
-                  options: CarouselOptions(
-                    height: 700,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    aspectRatio: 2,
-                    viewportFraction: 1,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _currentIndex = index;
-                      });
-                    },
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+              child: Column(
+          children: [
+              GestureDetector(
+                onTap: (){ Navigator.push(
+                context,
+                MaterialPageRoute(
+                builder: (context) => Upcoming_details(index1: _currentIndex,),
                 ),
+                );
+                },
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children:
+                  [
+                    CarouselSlider(
+                    items: rocketImages.map((imageUrl) {
+                      return ClipRRect(
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(launches[_currentIndex]["name"],
-                          style: TextStyle(
-                              fontSize: 20,
-
-                              color: Colors.white
-                          ),
+                        borderRadius: const BorderRadius.all(Radius.circular(30)),
+                        child: Image.network(
+                          imageUrl,
+                          fit: BoxFit.cover,
+                          color: Colors.black45,
+                          colorBlendMode: BlendMode.darken,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(launches[_currentIndex]["net"],
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            letterSpacing: 3,
-                              fontSize: 12,
-                              color: Colors.grey
-                          ),
-                        ),
-                      ),
-                     Padding(
-                       padding: const EdgeInsets.all(10.0),
-                       child: Row(
-                         children: [
-                           Icon(Icons.location_on_outlined,
-                           color: Colors.grey,
-                             size: 15,
-                           ),
-                           Expanded(
-                             child: Text( launches[_currentIndex]['pad']['location']['name'],
-                               style: TextStyle(
-                                   fontWeight: FontWeight.bold,
-                                   letterSpacing: 3,
-                                   fontSize: 12,
-                                   color: Colors.grey,
-                                  overflow: TextOverflow.ellipsis,
-                               ),
-                               maxLines: 2,
-                             ),
-                           ),
-                         ],
-                       ),
-                     ),
-                       const SizedBox(
-                        height: 30,
-                      ),
-                      Column(
-                        children: [
+                      );
+                    }).toList(),
+                    options: CarouselOptions(
+                      height: 700,
+                      autoPlay: false,
+                      enlargeCenterPage: true,
+                      aspectRatio: 2,
+                      viewportFraction: 1,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                      },
+                    ),
+                  ),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              for (int i = 0; i < rocketImages.length; i++)
-                                Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 4),
-                                  width: 15,
-                                  height: 1.5,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    color: _currentIndex == i ? Colors.white : Colors.grey,
-                                  ),
-                                ),
-                            ],
-                          ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(launches[_currentIndex]["name"],
+                            style: const TextStyle(
+                                fontSize: 20,
 
-                          SizedBox(height: 16),
-                          Text(
-                            '${_currentIndex + 1}/${rocketImages.length}',
-                            style: TextStyle(fontSize: 16,
                                 color: Colors.white
                             ),
                           ),
-                          SizedBox(height: 10),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(launches[_currentIndex]["net"],
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              letterSpacing: 3,
+                                fontSize: 12,
+                                color: Colors.grey
+                            ),
+                          ),
+                        ),
+                       Padding(
+                         padding: const EdgeInsets.all(10.0),
+                         child: Row(
+                           children: [
+                             const Icon(Icons.location_on_outlined,
+                             color: Colors.grey,
+                               size: 15,
+                             ),
+                             Expanded(
+                               child: Text( launches[_currentIndex]['pad']['location']['name'],
+                                 style: const TextStyle(
+                                     fontWeight: FontWeight.bold,
+                                     letterSpacing: 3,
+                                     fontSize: 12,
+                                     color: Colors.grey,
+                                    overflow: TextOverflow.ellipsis,
+                                 ),
+                                 maxLines: 2,
+                               ),
+                             ),
+                           ],
+                         ),
+                       ),
+                         const SizedBox(
+                          height: 30,
+                        ),
+                        Column(
+                          children: [
 
-        ],
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                for (int i = 0; i < rocketImages.length; i++)
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                                    width: 15,
+                                    height: 1.5,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.rectangle,
+                                      color: _currentIndex == i ? Colors.white : Colors.grey,
+                                    ),
+                                  ),
+                              ],
+                            ),
+
+                            const SizedBox(height: 16),
+                            Text(
+                              '${_currentIndex + 1}/${rocketImages.length}',
+                              style: const TextStyle(fontSize: 16,
+                                  color: Colors.white
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+          ],
+        ),
+            ),
       ),
-          ),
 
       //     :ListView.builder(
       //   itemCount: launches.length,

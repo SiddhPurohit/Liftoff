@@ -1,7 +1,6 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:space_flight_recorder/view/Maps.dart';
 import 'package:space_flight_recorder/view/about.dart';
 import 'package:space_flight_recorder/view/home.dart';
 import 'package:space_flight_recorder/view/main_page.dart';

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:space_flight_recorder/view/login/Name_Email.dart';
 
 import '../view/login/phone.dart';
 
@@ -19,17 +20,49 @@ class _Nav_DrawerState extends State<Nav_Drawer> {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blueAccent,
+           DrawerHeader(
+            decoration: const BoxDecoration(
+              color: Colors.white70,
             ),
-            child: Text('Go Space!!',
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.asset('assets/images/launch_icon.png',
+                    width: 70,
+                    height: 70,
+
+                  ),
+                ),
+                const Text("Liftoff - Capstone project for\nBhausaheb Vartak Polytechnic",
+                  style: TextStyle(
+                    fontSize: 16,
+                      color: Colors.white
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ListTile(
+            leading: const Icon(
+              color: Colors.white,
+              Icons.edit,
+            ),
+            title: const Text('Edit Name',
               style: TextStyle(
                   color: Colors.white
-              ),),
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Details()),
+              );
+            },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               color: Colors.white,
               Icons.logout,
             ),
@@ -46,6 +79,7 @@ class _Nav_DrawerState extends State<Nav_Drawer> {
               );
             },
           ),
+
           // ListTile(
           //   leading: Icon(
           //     Icons.train,

@@ -127,7 +127,9 @@ class _MyPhoneState extends State<MyPhone> {
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: '${countryController.text + phone}',
                         verificationCompleted: (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
+                        verificationFailed: (FirebaseAuthException e) {
+
+                        },
                         codeSent: (String verificationId, int? resendToken) {
                           MyPhone.verify = verificationId;
                           Navigator.pushNamed(context, 'verify');
@@ -137,9 +139,7 @@ class _MyPhoneState extends State<MyPhone> {
                         },
                         codeAutoRetrievalTimeout: (String verificationId) {},
                       );
-
                     },
-
                     child: const Text("Send the code")),
               ),
             ],

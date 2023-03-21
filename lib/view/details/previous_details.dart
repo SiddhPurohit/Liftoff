@@ -48,10 +48,10 @@ class _Previous_detailsState extends State<Previous_details> {
   void initState() {
     super.initState();
     fetchPrevious_details(widget.index1);
-    Timer.periodic(Duration(seconds: 1), (Timer t) => updateCountdown());
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => updateCountdown());
     if (FirebaseAuth.instance.currentUser!.displayName == null) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Details()));
+          context, MaterialPageRoute(builder: (context) => const Details()));
     }
     // _loadIcon();
   }
@@ -181,7 +181,7 @@ class _Previous_detailsState extends State<Previous_details> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
-        title: Text("Previous"),
+        title: const Text("Previous"),
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -193,7 +193,7 @@ class _Previous_detailsState extends State<Previous_details> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  Text(
+                  const Text(
                     'Launched at',
                     style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
@@ -204,7 +204,7 @@ class _Previous_detailsState extends State<Previous_details> {
                       alignment: Alignment.bottomLeft,
                       children: [
                         Container(
-                          margin: EdgeInsets.all(14.0),
+                          margin: const EdgeInsets.all(14.0),
                           decoration: BoxDecoration(
 
                               borderRadius: BorderRadius.circular(20),
@@ -228,9 +228,9 @@ class _Previous_detailsState extends State<Previous_details> {
                                 children: [
                                   Text(
                                     '$days : $hours : $minutes : $seconds',
-                                    style: TextStyle(fontSize: 30, color: Colors.white,),
+                                    style: const TextStyle(fontSize: 30, color: Colors.white,),
                                   ),
-                                  Text(
+                                  const Text(
                                     'Days : Hours : Minutes : Seconds',
                                     style: TextStyle(color: Colors.white, fontSize: 12),
                                   ),
@@ -268,14 +268,14 @@ class _Previous_detailsState extends State<Previous_details> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(rocketName,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold
                                 ),
                               ),
                               Text(missionType,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
                                 ),
@@ -286,9 +286,9 @@ class _Previous_detailsState extends State<Previous_details> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Container(
-                    margin: EdgeInsets.fromLTRB(15, 0, 10, 0),
+                    margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.transparent),
@@ -298,7 +298,7 @@ class _Previous_detailsState extends State<Previous_details> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "AGENCY",
                               style: TextStyle(
                                   fontSize: 15,
@@ -306,7 +306,7 @@ class _Previous_detailsState extends State<Previous_details> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Row(
                           children: [
                             CircleAvatar(
@@ -314,7 +314,7 @@ class _Previous_detailsState extends State<Previous_details> {
                               ),
                               backgroundColor: Colors.white,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                             Expanded(
@@ -325,7 +325,7 @@ class _Previous_detailsState extends State<Previous_details> {
                                   children: [
                                     Text(
                                       agencyName,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -333,7 +333,7 @@ class _Previous_detailsState extends State<Previous_details> {
                                     ),
                                     Text(
                                       padName,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.grey,
                                           fontSize: 12,
                                           fontWeight: FontWeight.bold),
@@ -345,7 +345,7 @@ class _Previous_detailsState extends State<Previous_details> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -353,35 +353,35 @@ class _Previous_detailsState extends State<Previous_details> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 10,),
-                              Text(
+                              const SizedBox(height: 10,),
+                              const Text(
                                 "DESCRIPTION",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: Colors.white),
                               ),
-                              SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
                               Text(
                                 description+programDescription,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 14,
                                     color: Colors.grey),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 15,),
+                        const SizedBox(height: 15,),
                         Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "MORE INFORMATION",
                                 style: TextStyle(
                                     fontSize: 15,
                                     color: Colors.white),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
@@ -389,7 +389,7 @@ class _Previous_detailsState extends State<Previous_details> {
                                     Container(
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(20),
-                                            color: Color.fromRGBO(27, 28, 33, 1)),
+                                            color: const Color.fromRGBO(27, 28, 33, 1)),
                                         height: 80,
                                         width: 200,
                                         child: Padding(
@@ -398,13 +398,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text('NAME', style: TextStyle(
+                                              const Text('NAME', style: TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 12
                                               ),),
-                                              SizedBox(height: 2,),
+                                              const SizedBox(height: 2,),
                                               Text( Name,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 15
                                                 ),),
@@ -412,13 +412,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                           ),
                                         )),
 
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     Container(
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(20),
-                                          color: Color.fromRGBO(27, 28, 33, 1)),
+                                          color: const Color.fromRGBO(27, 28, 33, 1)),
                                       height: 80,
                                       width: 200,
                                       child: Padding(
@@ -427,13 +427,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text('MISSION NAME', style: TextStyle(
+                                            const Text('MISSION NAME', style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12
                                             ),),
-                                            SizedBox(height: 2,),
+                                            const SizedBox(height: 2,),
                                             Text( missionName,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15
                                               ),),
@@ -441,13 +441,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     Container(
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(20),
-                                          color: Color.fromRGBO(27, 28, 33, 1)),
+                                          color: const Color.fromRGBO(27, 28, 33, 1)),
                                       height: 80,
                                       width: 200,
                                       child: Padding(
@@ -456,13 +456,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text('STATUS', style: TextStyle(
+                                            const Text('STATUS', style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12
                                             ),),
-                                            SizedBox(height: 2,),
+                                            const SizedBox(height: 2,),
                                             Text( m_status,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15
                                               ),),
@@ -479,7 +479,7 @@ class _Previous_detailsState extends State<Previous_details> {
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Container(
-                            margin: EdgeInsets.all(15.0),
+                            margin: const EdgeInsets.all(15.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -491,13 +491,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                         decoration: BoxDecoration(
                                             color: Colors.grey,
                                             borderRadius: BorderRadius.circular(10)),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.map,
                                           color: Colors.white,
                                           size: 45,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
@@ -505,12 +505,12 @@ class _Previous_detailsState extends State<Previous_details> {
                                         children: [
                                           Text(
                                             location,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Text('LOCATION',
+                                          const Text('LOCATION',
                                             style: TextStyle(
                                                 color: Colors.grey
                                             ),
@@ -520,7 +520,7 @@ class _Previous_detailsState extends State<Previous_details> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Container(
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -529,13 +529,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                         decoration: BoxDecoration(
                                             color: Colors.grey,
                                             borderRadius: BorderRadius.circular(10)),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.circle_outlined,
                                           color: Colors.white,
                                           size: 45,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
@@ -543,12 +543,12 @@ class _Previous_detailsState extends State<Previous_details> {
                                         children: [
                                           Text(
                                             orbitName,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Text('ORBIT',
+                                          const Text('ORBIT',
                                             style: TextStyle(
                                                 color: Colors.grey
                                             ),
@@ -558,7 +558,7 @@ class _Previous_detailsState extends State<Previous_details> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Container(
@@ -569,13 +569,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                         decoration: BoxDecoration(
                                             color: Colors.grey,
                                             borderRadius: BorderRadius.circular(10)),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.access_time_filled,
                                           color: Colors.white,
                                           size: 45,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
@@ -583,12 +583,12 @@ class _Previous_detailsState extends State<Previous_details> {
                                         children: [
                                           Text(
                                             localTime,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Text('Time of launch',
+                                          const Text('Time of launch',
                                             style: TextStyle(
                                                 color: Colors.grey
                                             ),
@@ -598,7 +598,7 @@ class _Previous_detailsState extends State<Previous_details> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 20,),
+                                const SizedBox(height: 20,),
                                 Container(
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -607,13 +607,13 @@ class _Previous_detailsState extends State<Previous_details> {
                                         decoration: BoxDecoration(
                                             color: Colors.grey,
                                             borderRadius: BorderRadius.circular(10)),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.date_range,
                                           color: Colors.white,
                                           size: 45,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Column(
@@ -621,12 +621,12 @@ class _Previous_detailsState extends State<Previous_details> {
                                         children: [
                                           Text(
                                             date_final,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          Text('Date of launch',
+                                          const Text('Date of launch',
                                             style: TextStyle(
                                                 color: Colors.grey
                                             ),
@@ -641,21 +641,21 @@ class _Previous_detailsState extends State<Previous_details> {
                           ),
 
                         ),
-                        Text(
+                        const Text(
                           "Location",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.0),
+                    margin: const EdgeInsets.symmetric(vertical: 5.0),
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey, width: 5),
                         borderRadius: BorderRadius.circular(10),
@@ -698,7 +698,7 @@ class _Previous_detailsState extends State<Previous_details> {
                       },
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
                 ],
               ),
             ),

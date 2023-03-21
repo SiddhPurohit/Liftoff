@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/siddhpurohit/Developer/GitHub/Liftoff/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/siddhpurohit/.gradle/caches/transforms-3/aa701b47cec244085d46a1a42fcc7fb9/transformed/core-1.6.0/res/values/values.xml",
@@ -23,22 +23,20 @@
                     }
                 },
                 {
-                    "source": "/Users/siddhpurohit/Developer/GitHub/Liftoff/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/app/generated/res/google-services/debug/values/values.xml",
                     "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,281,385,494,614,719",
+                        "endColumns": "143,81,103,108,119,104,81",
+                        "endOffsets": "194,276,380,489,609,714,796"
                     },
                     "to": {
-                        "startLines": "137,142",
-                        "startColumns": "4,4",
-                        "startOffsets": "10005,10313",
-                        "endLines": "141,144",
-                        "endColumns": "12,12",
-                        "endOffsets": "10308,10477"
+                        "startLines": "126,130,131,132,133,134,135",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "8973,9332,9414,9518,9627,9747,9852",
+                        "endColumns": "143,81,103,108,119,104,81",
+                        "endOffsets": "9112,9409,9513,9622,9742,9847,9929"
                     }
                 },
                 {
@@ -76,20 +74,22 @@
                     }
                 },
                 {
-                    "source": "/Users/siddhpurohit/Developer/GitHub/Liftoff/build/app/generated/res/google-services/debug/values/values.xml",
+                    "source": "/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/android/app/src/main/res/values/styles.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,281,385,494,614,719",
-                        "endColumns": "143,81,103,108,119,104,81",
-                        "endOffsets": "194,276,380,489,609,714,796"
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
                     },
                     "to": {
-                        "startLines": "126,130,131,132,133,134,135",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "8973,9332,9414,9518,9627,9747,9852",
-                        "endColumns": "143,81,103,108,119,104,81",
-                        "endOffsets": "9112,9409,9513,9622,9742,9847,9929"
+                        "startLines": "137,142",
+                        "startColumns": "4,4",
+                        "startOffsets": "10005,10313",
+                        "endLines": "141,144",
+                        "endColumns": "12,12",
+                        "endOffsets": "10308,10477"
                     }
                 },
                 {

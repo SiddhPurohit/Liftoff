@@ -98,10 +98,10 @@ class _HomePageState extends State<HomePage> {
     fetchPrevLaunches();
     fetchUpcoLaunches();
     fetchNews();
-    Timer.periodic(Duration(seconds: 1), (Timer t) => updateCountdown());
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => updateCountdown());
     if (FirebaseAuth.instance.currentUser!.displayName == null) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Details()));
+          context, MaterialPageRoute(builder: (context) => const Details()));
     }
   }
   void updateCountdown() {
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
     return
        Scaffold(
          backgroundColor: Colors.black,
-        drawer: Nav_Drawer(),
+        drawer: const Nav_Drawer(),
         appBar: AppBar(
 
           backgroundColor: Colors.black,
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 InkWell(
                   onTap: (){
                     Navigator.push(
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.bottomLeft,
                       children: [
                         Container(
-                          margin: EdgeInsets.all(10.0),
+                          margin: const EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(35),
                               color: Colors.white,
@@ -178,13 +178,13 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     '$days : $hours : $minutes : $seconds',
-                                    style: TextStyle(fontSize: 30, color: Colors.white,),
+                                    style: const TextStyle(fontSize: 30, color: Colors.white,),
                                   ),
                                   Text(
                                     '$days Days : $hours Hours : $minutes Minutes : $seconds Seconds',
-                                    style: TextStyle(color: Colors.white, fontSize: 12),
+                                    style: const TextStyle(color: Colors.white, fontSize: 12),
                                   ),
-                                  Text('Until the Launch',
+                                  const Text('Until the Launch',
                                   style: TextStyle(
                                     color: Colors.white
                                   ),
@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
                                     // fontWeight: FontWeight.bold
@@ -242,8 +242,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(13.0),
+                const Padding(
+                  padding: EdgeInsets.all(13.0),
                   child: Text('Previous Launches',
                   style: TextStyle(
                       color: Colors.white,
@@ -297,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                                             width: 230,
                                             child: Text(
                                               launches[index]['name'],
-                                              style: TextStyle(fontSize: 14.0,
+                                              style: const TextStyle(fontSize: 14.0,
                                                   color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                                 overflow: TextOverflow.fade,
@@ -310,7 +310,7 @@ class _HomePageState extends State<HomePage> {
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(2, 4, 2, 1),
                                         child: Text(launches[index]['net'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.white
                                         ),
                                         ),
@@ -318,8 +318,8 @@ class _HomePageState extends State<HomePage> {
                                     ],
                                   ),
                                   (launches[index]["status"]["abbrev"]=="Success"
-                                      ?Icon(Icons.check_circle_outline_rounded, color: Colors.green)
-                                      :Icon(Icons.close_rounded, color: Colors.red,))
+                                      ?const Icon(Icons.check_circle_outline_rounded, color: Colors.green)
+                                      :const Icon(Icons.close_rounded, color: Colors.red,))
                                 ],
                               ),
                             ),
@@ -330,8 +330,8 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
+                const Padding(
+                  padding: EdgeInsets.all(10.0),
                   child: Center(
                     child: Text('News',
                     style: TextStyle(
@@ -344,7 +344,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 1000,
                   child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: news.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
@@ -365,7 +365,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           title: Text(news[index]['title'],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white
                           ),
                           ),
@@ -382,7 +382,7 @@ class _HomePageState extends State<HomePage> {
                               //
                               // ),
                               Text(news[index]['newsSite'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.grey
                                 ),)
                             ],

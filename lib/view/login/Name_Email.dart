@@ -27,31 +27,37 @@ class _DetailsState extends State<Details> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Enter your name to continue',
+          const Text('Enter your name to continue',
           style: TextStyle(
             fontSize: 25,
             color: Colors.white
           ),
           ),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            TextFormField(
-              style: TextStyle(
-                color: Colors.white
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white)
               ),
-              controller: name_controller,
-              cursorColor: Colors.white,
-              decoration: InputDecoration(
+              child: TextFormField(
+                style: const TextStyle(
+                  color: Colors.white
+                ),
+                controller: name_controller,
+                cursorColor: Colors.white,
+                decoration: const InputDecoration(
 
-                border: OutlineInputBorder(),
-                hintText: "Name"
+                  border: OutlineInputBorder(),
+                  hintText: "Name",
+                  hintStyle: TextStyle(color: Colors.white)
+
+                ),
 
               ),
-
             ),
               ],
             ),
@@ -63,14 +69,16 @@ class _DetailsState extends State<Details> {
             //     context, MaterialPageRoute(builder: (context) => MyHome()));
             // datago();
               await FirebaseAuth.instance.currentUser!.updateDisplayName(name_controller.text);
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => HomePage(),
                 ),
               );
+
           },
-              child: Text("Submit"),
+              child: const Text("Submit"),
           ),
         ],
       ),

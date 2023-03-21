@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/Users/siddhpurohit/Developer/GitHub/Liftoff/android/app/src/debug/AndroidManifest.xml:7:5-66
-15-->/Users/siddhpurohit/Developer/GitHub/Liftoff/android/app/src/debug/AndroidManifest.xml:7:22-64
+15-->/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/android/app/src/debug/AndroidManifest.xml:7:5-66
+15-->/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/android/app/src/debug/AndroidManifest.xml:7:22-64
 16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 16-->[com.google.firebase:firebase-auth:21.1.0] /Users/siddhpurohit/.gradle/caches/transforms-3/0548e507d3019ac84ce4969b57803f45/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:5-79
 16-->[com.google.firebase:firebase-auth:21.1.0] /Users/siddhpurohit/.gradle/caches/transforms-3/0548e507d3019ac84ce4969b57803f45/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:22-76
@@ -79,31 +79,31 @@
 68            android:value="AIzaSyD7YcfTtpwdewCXHUs4zSGviUX5QU2hTec" />
 69
 70        <service
-70-->[:firebase_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+70-->[:firebase_auth] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
 71            android:name="com.google.firebase.components.ComponentDiscoveryService"
-71-->[:firebase_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-89
+71-->[:firebase_auth] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-89
 72            android:directBootAware="true"
 72-->[com.google.firebase:firebase-common:20.2.0] /Users/siddhpurohit/.gradle/caches/transforms-3/c1f7cd0e68ddf89c76a753ac7fd1a66c/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:34:13-43
 73            android:exported="false" >
 73-->[com.google.firebase:firebase-auth:21.1.0] /Users/siddhpurohit/.gradle/caches/transforms-3/0548e507d3019ac84ce4969b57803f45/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:66:13-37
 74            <meta-data
-74-->[:firebase_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+74-->[:firebase_auth] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
 75                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-75-->[:firebase_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+75-->[:firebase_auth] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
 76                android:value="com.google.firebase.components.ComponentRegistrar" />
-76-->[:firebase_auth] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+76-->[:firebase_auth] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 77            <meta-data
-77-->[:cloud_firestore] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+77-->[:cloud_firestore] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
 78                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-78-->[:cloud_firestore] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-134
+78-->[:cloud_firestore] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-134
 79                android:value="com.google.firebase.components.ComponentRegistrar" />
-79-->[:cloud_firestore] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+79-->[:cloud_firestore] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 80            <meta-data
-80-->[:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+80-->[:firebase_core] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
 81                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-81-->[:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+81-->[:firebase_core] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
 82                android:value="com.google.firebase.components.ComponentRegistrar" />
-82-->[:firebase_core] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+82-->[:firebase_core] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
 83            <meta-data
 83-->[com.google.firebase:firebase-auth:21.1.0] /Users/siddhpurohit/.gradle/caches/transforms-3/0548e507d3019ac84ce4969b57803f45/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:67:13-69:85
 84                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
@@ -119,13 +119,13 @@
 89        </service>
 90
 91        <activity
-91-->[:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+91-->[:url_launcher_android] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
 92            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-92-->[:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+92-->[:url_launcher_android] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
 93            android:exported="false"
-93-->[:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+93-->[:url_launcher_android] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
 94            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-94-->[:url_launcher_android] /Users/siddhpurohit/Developer/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+94-->[:url_launcher_android] /Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
 95
 96        <uses-library
 96-->[androidx.window:window:1.0.0-beta04] /Users/siddhpurohit/.gradle/caches/transforms-3/542a859793ec57d6a4d40865c7efc6d9/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40

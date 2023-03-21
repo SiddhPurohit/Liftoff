@@ -45,12 +45,12 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
       return LoadingScreen();
     }
     return Scaffold(
-      drawer:Nav_Drawer(),
+      drawer:const Nav_Drawer(),
       backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
-        title: Text("Previous Launches",
+        title: const Text("Previous Launches",
         style: TextStyle(
           letterSpacing: 2
         ),
@@ -96,21 +96,21 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
                       child: ListTile(
                         horizontalTitleGap: 15,
                         title: Text(launches[index]["name"],
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'Jura',
                           letterSpacing: 1,
                           color: Colors.white
                         ),
                         ),
                         subtitle: Text(launches[index]["net"],
-                          style: TextStyle(
+                          style: const TextStyle(
                               letterSpacing: 2,
                               color: Colors.white
 
                           ),),
                         trailing: launches[index]["status"]["abbrev"]=="Success"
-                            ?Icon(Icons.check_circle_outline_rounded, color: Colors.green)
-                            :Icon(Icons.close_rounded, color: Colors.red,)
+                            ?const Icon(Icons.check_circle_outline_rounded, color: Colors.green)
+                            :const Icon(Icons.close_rounded, color: Colors.red,)
 
                         // launches[index]["status"]["abbrev"] != 'Success'
                         //     ? launches[index]["status"]["abbrev"]

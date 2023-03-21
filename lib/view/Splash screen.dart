@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:space_flight_recorder/view/main_page.dart';
 
 class RocketAnimation extends StatefulWidget {
+
   @override
   _RocketAnimationState createState() => _RocketAnimationState();
 }
@@ -17,7 +18,7 @@ class _RocketAnimationState extends State<RocketAnimation> with SingleTickerProv
 
     // Create an animation controller
     _animationController = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
@@ -26,10 +27,10 @@ class _RocketAnimationState extends State<RocketAnimation> with SingleTickerProv
 
     // Start the animation
     _animationController.forward().whenComplete(() {
-      Future.delayed(Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 2), () {
         Navigator.of(context).pushReplacement(
           CupertinoPageRoute(
-            builder: (context) => main_page(),
+            builder: (context) => const main_page(),
           ),
         );
       });
@@ -76,7 +77,7 @@ class _RocketAnimationState extends State<RocketAnimation> with SingleTickerProv
             ),
           ),
           if (_animation.value == 1.0) // Only show the text when the animation completes
-            Center(
+            const Center(
               child: Text(
                 'Liftoff',
                 style: TextStyle(
