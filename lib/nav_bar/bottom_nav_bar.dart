@@ -42,14 +42,14 @@ class BottomNavBar extends StatelessWidget {
             label: 'Upcoming',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
+            icon: Icon(Icons.chat_bubble),
             label: 'Chat',
           ),
         ],
         showUnselectedLabels: false,
         type: BottomNavigationBarType.shifting,
         currentIndex: currentindexvalue,
-        selectedItemColor: Colors.blueAccent,
+        selectedItemColor: Colors.amberAccent,
         unselectedItemColor: Colors.white,
         onTap: (int index) {
           currentindexvalue = index;

@@ -67,32 +67,47 @@ class _ChatGptPageState extends State<ChatGptPage> {
               Container(
 
                 decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                   border: Border.all(color: Colors.white)
                 ),
-                child: TextField(
-                  style: const TextStyle(
-                    color: Colors.white
-                  ),
-                  controller: _textController,
-                  decoration: const InputDecoration(
-                    hintText: "Ask a question...",
-                    border: OutlineInputBorder(),
-                    hintStyle: TextStyle(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: const TextStyle(
                       color: Colors.white
-                    )
+                    ),
+                    controller: _textController,
+                    decoration: const InputDecoration(
+
+                      border: InputBorder.none,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white)
+                      ),
+                      hintText: "Ask a question...",
+                      hintStyle: TextStyle(
+                        color: Colors.white
+                      )
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _getChatGptResponse,
-                child: const Text("Ask"),
+                child: const Text("Ask",
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  onPrimary: Colors.black,//this is for the text present on the button
+                )
+
               ),
               const SizedBox(height: 16),
               Container(
                 width: 350,
                 height: 500,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                   border: Border.all(color: Colors.white)
                 ),
                 child: Padding(
