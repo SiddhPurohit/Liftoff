@@ -259,7 +259,7 @@ class about extends StatelessWidget {
                   const SizedBox(height: 40),
                 ]),
           ),
-           bottomNavigationBar: BottomNavBar(3),
+           // bottomNavigationBar: BottomNavBar(3),
         );
 
   }

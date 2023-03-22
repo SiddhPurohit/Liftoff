@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:space_flight_recorder/view/about.dart';
+import 'package:space_flight_recorder/view/chat.dart';
 import 'package:space_flight_recorder/view/home.dart';
 import 'package:space_flight_recorder/view/previous.dart';
 import 'package:space_flight_recorder/view/upcoming.dart';
@@ -41,8 +42,8 @@ class BottomNavBar extends StatelessWidget {
             label: 'Upcoming',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: 'About',
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chat',
           ),
         ],
         showUnselectedLabels: false,
@@ -63,11 +64,11 @@ class BottomNavBar extends StatelessWidget {
 
           if (index == 2) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LaunchList()));
+                MaterialPageRoute(builder: (context) => const LaunchList()));
           }
           if (index == 3) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => about()));
+                context, MaterialPageRoute(builder: (context) => const ChatGptPage()));
           }
         },
       ),

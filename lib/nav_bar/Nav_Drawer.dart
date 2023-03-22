@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:space_flight_recorder/view/about.dart';
 import 'package:space_flight_recorder/view/login/Name_Email.dart';
 
 import '../view/login/phone.dart';
@@ -61,6 +62,7 @@ class _Nav_DrawerState extends State<Nav_Drawer> {
               );
             },
           ),
+
           ListTile(
             leading: const Icon(
               color: Colors.white,
@@ -76,6 +78,23 @@ class _Nav_DrawerState extends State<Nav_Drawer> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MyPhone()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              color: Colors.white,
+              Icons.info,
+            ),
+            title: const Text('About',
+              style: TextStyle(
+                  color: Colors.white
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const about()),
               );
             },
           ),
