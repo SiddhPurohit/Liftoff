@@ -34,8 +34,7 @@ class _HomePageState extends State<HomePage> {
   bool loading2 = true;
   bool loading3 = true;
   Future<void> fetchUpcoLaunches() async {
-    final response =
-    await http.get(Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/'));
+    final response = await http.get(Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
 
           final name1 = uLaunch['name'];
           name = name1.toString();
-          print("name =="+name);
+
           final launchTimeStr = uLaunch['net'];
           ulaunchTime = DateTime.parse(launchTimeStr).toLocal();
           time1 = ulaunchTime.toString();

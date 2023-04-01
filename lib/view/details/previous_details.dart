@@ -407,7 +407,9 @@ class _Previous_detailsState extends State<Previous_details> {
                                                 style: const TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 15
-                                                ),),
+                                                ),
+                                                maxLines: 2,
+                                              ),
                                             ],
                                           ),
                                         )),
@@ -430,7 +432,9 @@ class _Previous_detailsState extends State<Previous_details> {
                                             const Text('MISSION NAME', style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12
-                                            ),),
+                                            ),
+                                              maxLines: 2,
+                                            ),
                                             const SizedBox(height: 2,),
                                             Text( missionName,
                                               style: const TextStyle(
@@ -459,7 +463,9 @@ class _Previous_detailsState extends State<Previous_details> {
                                             const Text('STATUS', style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12
-                                            ),),
+                                            ),
+                                              maxLines: 2,
+                                            ),
                                             const SizedBox(height: 2,),
                                             Text( m_status,
                                               style: const TextStyle(

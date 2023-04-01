@@ -21,7 +21,7 @@ class about extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.black,
           ),
-          drawer: const Nav_Drawer(),
+
           backgroundColor: Colors.black,
           body: SingleChildScrollView(
             child: Column(

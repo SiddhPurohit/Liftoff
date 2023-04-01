@@ -35,9 +35,10 @@ class _Nav_DrawerState extends State<Nav_Drawer> {
 
                   ),
                 ),
-                const Text("Liftoff - Capstone project for\nBhausaheb Vartak Polytechnic",
+                SizedBox(height: 20,),
+                const Text("Liftoff",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                       color: Colors.white
                   ),
                 ),

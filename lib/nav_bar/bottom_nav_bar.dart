@@ -26,30 +26,32 @@ class BottomNavBar extends StatelessWidget {
               .textTheme
               .copyWith(caption: new TextStyle(color: Colors.yellow))),
       child: BottomNavigationBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+
+            icon: Icon(Icons.home_outlined, size: 27,),
             label: 'Home',
+
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.restart_alt),
+            icon: Icon(Icons.restart_alt, size: 27,),
             label: 'Previous',
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.rocket_launch),
+            icon: Icon(Icons.rocket_launch, size: 27,),
             label: 'Upcoming',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble),
-            label: 'Chat',
+            icon: Icon(Icons.cloud_outlined, size: 27,),
+            label: 'Spacebot',
           ),
         ],
         showUnselectedLabels: false,
         type: BottomNavigationBarType.shifting,
         currentIndex: currentindexvalue,
-        selectedItemColor: Colors.amberAccent,
+        selectedItemColor: Colors.blueAccent,
         unselectedItemColor: Colors.white,
         onTap: (int index) {
           currentindexvalue = index;
@@ -68,7 +70,7 @@ class BottomNavBar extends StatelessWidget {
           }
           if (index == 3) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const ChatGptPage()));
+                context, MaterialPageRoute(builder: (context) => const SpaceBotPage()));
           }
         },
       ),

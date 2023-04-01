@@ -99,16 +99,27 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
       final List<dynamic> results = data['results'];
       if (results.isNotEmpty) {
         final launch = results.elementAt(index);
+
         final launchTimeStr = launch['net'];
         launchTime = DateTime.parse(launchTimeStr).toLocal();
         time1 = launchTime.toString();
-        print(time1);
         final Launchname = launch['name'];
         Name = Launchname.toString();
         final descp = launch['mission']['description'];
-        description = descp;
+        if(launch['mission']['description']==null){
+          description='';
+        }
+        else{
+          description = descp;
+        }
+
         final agenName = launch['launch_service_provider']['name'];
-        agencyName = agenName;
+        if (launch['launch_service_provider']['name']==null){
+          agencyName = "";
+        }
+        else {
+          agencyName = agenName;
+        }
         if(launch['launch_service_provider']['type']==null){
           type="";
         }
@@ -121,9 +132,20 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
         final r_variant = launch['rocket']['configuration']['variant'];
         rocketVariant = r_variant;
         final m_name = launch['mission']['name'];
-        missionName = m_name;
+        if(launch['mission']['name']==null){
+          missionName='';
+        }
+        else {
+          missionName = m_name;
+        }
         final orbit_name = launch['mission']['orbit']['name'];
-        orbitName = orbit_name;
+        if(launch['mission']['orbit']['name']==null){
+          orbitName='';
+        }
+        else{
+          orbitName = orbit_name;
+        }
+
         final pad_location = launch['pad']['location']['name'];
         location = pad_location;
         final estimated_time = launch['net'];
@@ -135,7 +157,13 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
         final image = launch['image'];
         imgSrc = image;
         final m_type = launch['mission']['type'];
-        missionType = m_type;
+        if(launch['mission']['type']==null){
+          missionType='';
+        }
+        else{
+          missionType = m_type;
+        }
+
         final pad_name = launch['pad']['name'];
         padName = pad_name;
         final status = launch['status']['name'];
@@ -410,7 +438,9 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
                                                 style: const TextStyle(
                                                     color: Colors.white,
                                                     fontSize: 15
-                                                ),),
+                                                ),
+                                                maxLines: 2,
+                                              ),
                                             ],
                                           ),
                                         )),
@@ -439,7 +469,9 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15
-                                              ),),
+                                              ),
+                                              maxLines: 2,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -468,7 +500,9 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 15
-                                              ),),
+                                              ),
+                                              maxLines: 2,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -482,6 +516,7 @@ class _Upcoming_detailsState extends State<Upcoming_details> {
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Container(
+
                             margin: const EdgeInsets.all(15.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

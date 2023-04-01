@@ -1,15 +1,16 @@
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:space_flight_recorder/nav_bar/Nav_Drawer.dart';
 import 'package:space_flight_recorder/nav_bar/bottom_nav_bar.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-const String chatGptEndpoint = "https://api.openai.com/v1/chat/completions?=";
+const String SpaceBotEndpoint = "https://api.openai.com/v1/chat/completions?=";
 
-Future<Map<String, dynamic>> getChatGptResponse(String text, String apiKey) async {
+Future<Map<String, dynamic>> getSpaceBotResponse(String text, String apiKey) async {
   final response = await http.post(
-    Uri.parse(chatGptEndpoint),
+    Uri.parse(SpaceBotEndpoint),
     headers: {
       "Content-Type": "application/json",
       "Authorization": "Bearer $apiKey",
@@ -25,24 +26,24 @@ Future<Map<String, dynamic>> getChatGptResponse(String text, String apiKey) asyn
     return jsonDecode(response.body);
   } else {
     print(response.statusCode);
-    throw Exception("Failed to get response from ChatGPT API");
+    throw Exception("Failed to get response from SpaceBot API");
   }
 }
 
-class ChatGptPage extends StatefulWidget {
-  const ChatGptPage({Key? key}) : super(key: key);
+class SpaceBotPage extends StatefulWidget {
+  const SpaceBotPage({Key? key}) : super(key: key);
 
   @override
-  _ChatGptPageState createState() => _ChatGptPageState();
+  _SpaceBotPageState createState() => _SpaceBotPageState();
 }
 
-class _ChatGptPageState extends State<ChatGptPage> {
+class _SpaceBotPageState extends State<SpaceBotPage> {
   final _textController = TextEditingController();
-  String _responseText = "";
+  String _responseText = "Example: What is ISRO's mission statement?";
 
-  Future<void> _getChatGptResponse() async {
+  Future<void> _getSpaceBotResponse() async {
     final apiKey = "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";
-    final response = await getChatGptResponse(_textController.text, apiKey);
+    final response = await getSpaceBotResponse("Your name is Spacebot and reply only if the below question is somewhat related to space"+_textController.text, apiKey);
     setState(() {
       _responseText = response["choices"][0]["message"]["content"];
     });
@@ -51,12 +52,11 @@ class _ChatGptPageState extends State<ChatGptPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: Colors.black,
       drawer: const Nav_Drawer(),
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("Ask anything",
-
+        title:  Text("Hi "+FirebaseAuth.instance.currentUser!.displayName.toString()+", how can I help you?",
         ),
       ),
       body: SingleChildScrollView(
@@ -64,79 +64,78 @@ class _ChatGptPageState extends State<ChatGptPage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+
+              // ElevatedButton(
+              //   onPressed: _getSpaceBotResponse,
+              //   style: ElevatedButton.styleFrom(
+              //     primary: Colors.white,
+              //     onPrimary: Colors.black,//this is for the text present on the button
+              //   ),
+              //   child: const Text("Ask",
+              //   )
+              //
+              // ),
+              SizedBox(height: 30,),
+              Container(
+                width: double.infinity,
+                height: 450,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  border: Border.all(color: Colors.white)
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SingleChildScrollView(
+                      child: Text(_responseText,
+                      style: const TextStyle(
+                        color: Colors.white
+                      ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // const SizedBox(height: 30,),
+              SizedBox(height: 60,),
               Container(
 
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  border: Border.all(color: Colors.white)
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(color: Colors.white)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: const TextStyle(
-                      color: Colors.white
-                    ),
-                    controller: _textController,
-                    decoration: const InputDecoration(
-
-                      border: InputBorder.none,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white)
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 300,
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              color: Colors.white
+                          ),
+                          controller: _textController,
+                          decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              hintText: "Ask a question...",
+                              hintStyle: TextStyle(
+                                  color: Colors.white
+                              ),
+                          ),
+                        ),
                       ),
-                      hintText: "Ask a question...",
-                      hintStyle: TextStyle(
-                        color: Colors.white
-                      )
-                    ),
+                      IconButton(
+                          onPressed: _getSpaceBotResponse,
+                          icon: const Icon(Icons.send,
+                          color: Colors.white,
+                          ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _getChatGptResponse,
-                child: const Text("Ask",
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.black,//this is for the text present on the button
-                )
-
-              ),
-              const SizedBox(height: 16),
-              Container(
-                width: 350,
-                height: 500,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  border: Border.all(color: Colors.white)
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: SingleChildScrollView(
-                    child: Text(_responseText,
-                    style: const TextStyle(
-                      color: Colors.white
-                    ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30,),
-              InkWell(
-                child: const Text("Powered by ChatGPT API",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey,
-                  decoration: TextDecoration.underline
-                ),
-
-                ),
-                onTap: ()
-                {
-                  launchUrlString('https://platform.openai.com/',
-                      mode: LaunchMode.externalApplication
-                  );
-                },
               ),
             ],
           ),
