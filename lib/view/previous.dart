@@ -4,10 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:space_flight_recorder/nav_bar/Nav_Drawer.dart';
 import 'package:space_flight_recorder/view/details/previous_details.dart';
 import 'dart:convert';
-
 import 'package:space_flight_recorder/view/details/upcoming_details.dart';
 import 'package:space_flight_recorder/view/loading.dart';
-
 import '../nav_bar/bottom_nav_bar.dart';
 import 'login/phone.dart';
 
@@ -21,12 +19,14 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
   bool loading = true;
 
   Future<void> fetchData() async {
-    var url = "https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=110";
+    var url = "https://ll.thespacedevs.com/2.2.0/launch/previous";
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       setState(() {
         launches = data['results'];
+
+
       });
     } else {
       print('Request failed with status: ${response.statusCode}.');
@@ -59,7 +59,7 @@ class _PreviousLaunchesState extends State<PreviousLaunches> {
       body: Center(
         child:
         ListView.builder(
-          itemCount: launches.length,
+          itemCount: 9,
           itemBuilder: (context, index) {
             return SingleChildScrollView(
               child: GestureDetector(

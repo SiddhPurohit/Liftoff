@@ -30,12 +30,12 @@ class _LaunchListState extends State<LaunchList> {
   int _currentIndex = 0;
   @override
   void initState() {
-    super.initState();
+    super. initState();
     fetchLaunches();
   }
   void fetchLaunches() async {
     final response = await http.get(
-      Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/')
+      Uri.parse('https://ll.thespacedevs.com/2.2.0/launch/upcoming/')
     );
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);

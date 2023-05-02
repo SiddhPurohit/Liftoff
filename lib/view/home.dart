@@ -95,7 +95,7 @@ class _Home1State extends State<Home1> {
   // }
   void fetchHome1() async {
     final response = await http.get(
-        Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/'));
+        Uri.parse('https://ll.thespacedevs.com/2.2.0/launch/upcoming/'));
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final List<dynamic> results = data['results'];

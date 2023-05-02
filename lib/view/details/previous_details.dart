@@ -92,7 +92,7 @@ class _Previous_detailsState extends State<Previous_details> {
   // }
   void fetchPrevious_details(index) async {
     final response = await http.get(
-        Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/previous/?limit=110'));
+        Uri.parse('https://ll.thespacedevs.com/2.2.0/launch/previous/?limit=110'));
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final List<dynamic> results = data['results'];

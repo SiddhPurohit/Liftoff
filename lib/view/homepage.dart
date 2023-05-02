@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   bool loading2 = true;
   bool loading3 = true;
   Future<void> fetchUpcoLaunches() async {
-    final response = await http.get(Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/upcoming/'));
+    final response = await http.get(Uri.parse('https://ll.thespacedevs.com/2.2.0/launch/upcoming/'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -61,12 +61,11 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> fetchPrevLaunches() async {
     final response =
-    await http.get(Uri.parse('https://lldev.thespacedevs.com/2.2.0/launch/previous/'));
+    await http.get(Uri.parse('https://ll.thespacedevs.com/2.2.0/launch/previous/'));
 
     if (response.statusCode == 200) {
 
         launches = jsonDecode(response.body)['results'];
-
 
 
     } else {
@@ -78,7 +77,6 @@ class _HomePageState extends State<HomePage> {
   Future<void> fetchNews() async {
     final response =
     await http.get(Uri.parse('https://api.spaceflightnewsapi.net/v3/articles'));
-
     if (response.statusCode == 200) {
       setState(() {
         news = jsonDecode(response.body);

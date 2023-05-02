@@ -1,0 +1,4 @@
+#Tue May 02 19:12:51 IST 2023
+base.0=/Users/siddhpurohit/Developer/Flutter projects/GitHub/Liftoff/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
