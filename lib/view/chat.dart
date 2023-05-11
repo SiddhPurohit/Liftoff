@@ -42,7 +42,7 @@ class _SpaceBotPageState extends State<SpaceBotPage> {
   String _responseText = "Example: What is ISRO's mission statement?";
 
   Future<void> _getSpaceBotResponse() async {
-    final apiKey = "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";
+    final apiKey = "YOUR-API-KEY";
     final response = await getSpaceBotResponse("Your name is Spacebot and reply only if the below question is somewhat related to space"+_textController.text, apiKey);
     setState(() {
       _responseText = response["choices"][0]["message"]["content"];
