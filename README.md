@@ -1,6 +1,6 @@
 My capstone project
 
-To run this project you will have add your OpenAi api key in chat.dart file.
+To run this project you will have to add your OpenAi api key in chat.dart file.
 
 Do not forget to run Pub get
 
@@ -10,4 +10,11 @@ I also recommend using your own api key for google maps in the AndroidManifest.x
 
 
 
-Using the api link you will only have 15 api calls per hour, for testing and developing purpose you should let it be in dev mode before you deploy.
+Here is a short execution video of the project.
+
+
+
+https://github.com/SiddhPurohit/Liftoff/assets/84131034/97d4b72d-875b-4ef8-878b-f41bb3e9a15e
+
+
+
